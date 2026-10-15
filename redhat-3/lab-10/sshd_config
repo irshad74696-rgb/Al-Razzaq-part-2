@@ -1,0 +1,6 @@
+Port 2222
+PermitRootLogin no
+PasswdAuthentication no
+PubkeyAuthentication yes
+AllowUsers irshadali
+

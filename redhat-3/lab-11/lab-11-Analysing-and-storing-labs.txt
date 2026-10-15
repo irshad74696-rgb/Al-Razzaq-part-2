@@ -1,0 +1,114 @@
+Lab 11: Analyzing and Storing Logs
+Objectives
+By the end of this lab, you will be able to:
+
+Locate, view, and interpret system logs for troubleshooting
+Explore /var/log directory contents
+Use journalctl filters to analyze system logs
+Understand and configure logrotate for log management
+Search and filter logs using grep and awk
+Prerequisites
+A Linux system (RHEL/CentOS/Fedora recommended)
+Basic command line proficiency
+Root or sudo privileges for certain commands
+Podman installed (for container logging examples)
+Lab Tasks
+Task 1: Exploring /var/log Files
+Objective: Understand system log locations and contents
+
+List log files:
+
+ls -l /var/log
+Expected: Shows directory contents (auth.log, messages, syslog, etc.)
+View system messages:
+
+sudo cat /var/log/messages
+Expected: Displays system-wide log messages
+View authentication logs:
+
+sudo cat /var/log/secure
+Expected: Shows authentication-related events
+Troubleshooting Tip: If files don't exist, check your distro's documentation (Ubuntu uses auth.log instead of secure)
+
+Task 2: Using journalctl Filters
+Objective: Analyze systemd journal logs effectively
+
+View full journal:
+
+sudo journalctl
+Expected: Displays all journal entries
+Filter by time:
+
+sudo journalctl --since "2023-01-01" --until "2023-01-02"
+Filter by service:
+
+sudo journalctl -u sshd
+Expected: Shows SSH service logs
+Follow logs in real-time:
+
+sudo journalctl -f
+Press Ctrl+C to exit
+Key Concept: Systemd journals provide structured, indexed logging with powerful filtering
+
+Task 3: Understanding logrotate
+Objective: Configure automatic log rotation
+
+View active logrotate configurations:
+
+ls /etc/logrotate.d/
+cat /etc/logrotate.conf
+Create test log rotation config:
+
+sudo nano /etc/logrotate.d/mylogs
+Add:
+
+/var/log/mylog.log {
+    daily
+    rotate 7
+    compress
+    missingok
+    notifempty
+}
+Test configuration:
+
+sudo logrotate -d /etc/logrotate.d/mylogs
+Expected: Shows what would happen without making changes
+Troubleshooting Tip: Use -f flag to force rotation if testing with real logs
+
+Task 4: Searching Logs with grep and awk
+Objective: Efficiently search and analyze log content
+
+Basic grep search:
+
+sudo grep "error" /var/log/messages
+Case-insensitive search:
+
+sudo grep -i "fail" /var/log/secure
+Count occurrences:
+
+sudo grep -c "authentication failure" /var/log/secure
+Advanced filtering with awk:
+
+sudo awk '/Failed password/ {print $1, $2, $3, $9, $11}' /var/log/secure
+Expected: Shows timestamp and IP for failed logins
+Container log inspection (Podman example):
+
+podman logs <container_id> | grep -i error
+Key Concept: Combining grep/awk with pipes enables powerful log analysis
+
+Conclusion
+In this lab, you've learned essential log management skills:
+
+Located and interpreted system logs in /var/log
+Used journalctl with various filters for systemd systems
+Configured logrotate for automated log maintenance
+Applied grep and awk for efficient log searching
+These skills are crucial for troubleshooting and maintaining healthy systems, especially in containerized environments like OpenShift.
+
+Next Steps
+Practice creating custom logrotate configurations
+Explore JSON output options in journalctl (-o json)
+Experiment with advanced awk scripts for log analysis
+Verification: Run sudo journalctl --disk-usage to check your journal size
+Cleanup: Remove any test logrotate configs you created
+Final Tip: Consider setting up centralized logging (ELK stack) for production environments
