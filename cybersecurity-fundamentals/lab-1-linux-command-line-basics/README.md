@@ -1,4 +1,4 @@
-# Linux Command-Line Basics
+# Lab 1: Linux Command-Line Basics
 
 The shell is where security work happens: servers rarely have a desktop, logs and configs are plain text files, and most security tools are run from a terminal. This lab builds the four habits everything else depends on: knowing **where you are**, **moving around**, **handling files safely**, and **reading and setting permissions**.
 

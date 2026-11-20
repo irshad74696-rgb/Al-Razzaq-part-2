@@ -1,4 +1,4 @@
-# PowerShell Fundamentals on Linux
+# Lab 2: PowerShell Fundamentals on Linux
 
 PowerShell is the main automation shell on Windows, and a lot of real-world security work (incident response on Windows hosts, Active Directory audits, reading attacker scripts) means reading or writing it. Since PowerShell 6 it is cross-platform and open source, so it can be learned on a Linux box. This lab covers the core of the language: how commands are named, how to look things up, how to work with files and folders, and the basic building blocks of a script.
 

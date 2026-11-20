@@ -4,8 +4,8 @@ Core hands-on skills for security work: driving a shell on Linux and Windows-sty
 
 | Folder | What it covers | Scripts |
 | --- | --- | --- |
-| [`linux-command-line-basics/`](linux-command-line-basics/README.md) | Navigating the filesystem, managing files, `chmod`/`chown` and how directory permissions behave | 3 Bash scripts |
-| [`powershell-fundamentals/`](powershell-fundamentals/README.md) | PowerShell 7 on Linux: finding cmdlets, `*-Item` file management, variables, conditions and loops, with a cmdlet-to-Linux comparison | 4 PowerShell scripts |
-| [`python-automation/`](python-automation/README.md) | File handling, error handling, log writing, a dry-run-first folder cleanup, a simulated network monitor and a password checker | 5 Python scripts + sample CSV |
+| [`lab-1-linux-command-line-basics/`](lab-1-linux-command-line-basics/README.md) | Navigating the filesystem, managing files, `chmod`/`chown` and how directory permissions behave | 3 Bash scripts |
+| [`lab-2-powershell-fundamentals/`](lab-2-powershell-fundamentals/README.md) | PowerShell 7 on Linux: finding cmdlets, `*-Item` file management, variables, conditions and loops, with a cmdlet-to-Linux comparison | 4 PowerShell scripts |
+| [`lab-3-python-scripting-for-automation/`](lab-3-python-scripting-for-automation/README.md) | File handling, error handling, log writing, a dry-run-first folder cleanup, a simulated network monitor and a password checker | 5 Python scripts + sample CSV |
 
 Write-ups for each day are in the [Lab Log](../LAB-LOG.md).

@@ -1,4 +1,4 @@
-# Python Scripting for Security Automation
+# Lab 3: Python Scripting for Security Automation
 
 Most security work is repetitive: read an inventory, write an event to a log, clear out junk files, check a value against a rule, do it again tomorrow. Python is the usual tool for turning those chores into scripts that run the same way every time. This lab builds five small command-line tools that practise the basics: reading and writing files safely, handling errors, automating a cleanup job, and combining loops, conditions and functions into something useful.
 
@@ -26,7 +26,7 @@ Most security work is repetitive: read an inventory, write an event to a log, cl
 ## 1. Quick start
 
 ```bash
-cd cybersecurity-fundamentals/python-automation
+cd cybersecurity-fundamentals/lab-3-python-scripting-for-automation
 
 python3 scripts/file_reader.py                  # print the device inventory
 python3 scripts/log_writer.py                   # append sample events to logs/security.log
