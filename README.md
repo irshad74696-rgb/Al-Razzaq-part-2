@@ -8,7 +8,7 @@ Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm
 
 | Track | What it covers | Where |
 | --- | --- | --- |
-| Linux system administration | Shell, files and permissions, users, processes, systemd services and timers, SSH, networking, storage, SELinux | [`redhat-3/`](redhat-3/), [Lab Log](LAB-LOG.md) |
+| Linux system administration | Shell, files and permissions, users, processes, systemd services and timers, SSH, networking, storage, SELinux | [`redhat-3/`](redhat-3/README.md), [Lab Log](LAB-LOG.md) |
 | Containers | Podman, Containerfiles, ports, volumes and bind mounts | [Lab Log](LAB-LOG.md) (lab folders coming soon) |
 | Cyber Security | Python automation for security tasks, packet analysis with Wireshark | [Lab Log](LAB-LOG.md) |
 | Cloud computing | Planned | |
