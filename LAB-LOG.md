@@ -6,6 +6,7 @@ Newest entries are at the top. The "what broke" sections are deliberate: debuggi
 
 | Date | Track | Lab | Outcome |
 | --- | --- | --- | --- |
+| 2026-11-20 | Cyber Security | [Lab 4: Bash scripting essentials](lab-log/2026-11-20-bash-scripting-essentials.md) | Variables, functions, loops and `case`; verified backups with logging and safe retention; cron scheduling and a health monitor; [lab folder](cybersecurity-fundamentals/lab-4-bash-scripting-essentials/README.md) with seven scripts and a sample crontab |
 | 2026-11-20 | Cyber Security | [Lab 3: Python scripting for security automation](lab-log/2026-11-20-python-automation.md) | File I/O with `with open()`, error handling, a dry-run-first folder cleanup, simulated network monitor and password checker; [lab folder](cybersecurity-fundamentals/lab-3-python-scripting-for-automation/README.md) with five scripts |
 | 2026-11-20 | Cyber Security | [Lab 2: PowerShell fundamentals on Linux](lab-log/2026-11-20-powershell-fundamentals.md) | Cmdlet discovery, `*-Item` file management, variables, conditions and loops; [lab folder](cybersecurity-fundamentals/lab-2-powershell-fundamentals/README.md) with four scripts |
 | 2026-11-20 | Cyber Security | [Lab 1: Linux command-line basics](lab-log/2026-11-20-linux-command-line-basics.md) | Navigation, file management, `chmod`/`chown` and directory permissions; [lab folder](cybersecurity-fundamentals/lab-1-linux-command-line-basics/README.md) with practice scripts |
