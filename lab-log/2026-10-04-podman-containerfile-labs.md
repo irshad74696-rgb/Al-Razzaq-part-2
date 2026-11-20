@@ -42,7 +42,7 @@ CMD ["default-argument"]
 
 | Problem | Cause | Fix |
 | --- | --- | --- |
-| `COPY` build failed | Destination was written as `/~/alrazzaq2/...`; `~` is a host shell shortcut and means nothing inside an image | Used an absolute container path such as `/app/` |
+| `COPY` build failed | Destination was written with a `~` home-folder path; `~` is a host shell shortcut and means nothing inside an image | Used an absolute container path such as `/app/` |
 | `pip` inside `podman build` could not reach pypi.org | Build containers could not resolve DNS on this machine | Workaround: `podman build --network=host`. Root cause not yet diagnosed |
 
 ## Key takeaway
