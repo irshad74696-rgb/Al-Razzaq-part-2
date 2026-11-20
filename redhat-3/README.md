@@ -1,6 +1,6 @@
 # Linux System Administration Labs
 
-Twenty short labs on running a Red Hat-style Linux system, done on my own Ubuntu 25.10 machine. The notes below are my own summaries; lab handouts are not included.
+Short labs on running a Red Hat-style Linux system, done on my own Ubuntu 25.10 machine. The notes below are my own summaries; lab handouts are not included.
 
 Fuller write-ups for selected labs live in the [Lab Log](../LAB-LOG.md).
 
