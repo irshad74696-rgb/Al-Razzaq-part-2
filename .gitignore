@@ -1,1 +1,9 @@
 redhat_2/
+
+# Packet captures can contain real traffic from my network
+*.pcap
+*.pcapng
+
+# Editor and OS clutter
+*.swp
+.DS_Store
