@@ -6,6 +6,7 @@ Newest entries are at the top. The "what broke" sections are deliberate: debuggi
 
 | Date | Track | Lab | Outcome |
 | --- | --- | --- | --- |
+| 2026-11-20 | Cyber Security | [Linux command-line basics](lab-log/2026-11-20-linux-command-line-basics.md) | Navigation, file management, `chmod`/`chown` and directory permissions; [lab folder](Cyber-Security/linux-command-line-basics/README.md) with practice scripts |
 | 2026-11-20 | Cyber Security | [Packet analysis with Wireshark and tshark](lab-log/2026-11-20-wireshark-packet-analysis.md) | Captured live traffic, filtered HTTP/TCP/DNS, and exported reports with `tshark -z` |
 | 2026-10-19 | Linux | [Scheduling jobs with systemd timers](lab-log/2026-10-19-systemd-timers.md) | In progress: service and timer units written; results still to record |
 | 2026-10-11 | Linux / Cyber Security | [Hardening the SSH server](lab-log/2026-10-11-ssh-hardening.md) | sshd on port 2222, root and password logins off, key-only login for one user |

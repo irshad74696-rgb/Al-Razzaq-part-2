@@ -10,7 +10,7 @@ Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm
 | --- | --- | --- |
 | Linux system administration | Shell, files and permissions, users, processes, systemd services and timers, SSH, networking, storage, SELinux | [`redhat-3/`](redhat-3/README.md), [Lab Log](LAB-LOG.md) |
 | Containers | Podman, Containerfiles, ports, volumes and bind mounts | [Lab Log](LAB-LOG.md) (lab folders coming soon) |
-| Cyber Security | Python automation for security tasks, packet analysis with Wireshark | [Lab Log](LAB-LOG.md) |
+| Cyber Security | Linux command-line basics and permissions, Python automation for security tasks, packet analysis with Wireshark | [`Cyber-Security/`](Cyber-Security/linux-command-line-basics/README.md), [Lab Log](LAB-LOG.md) |
 | Cloud computing | Planned | |
 | Artificial intelligence | Planned | |
 
@@ -24,4 +24,5 @@ Ubuntu 25.10, Bash, Podman, systemd, OpenSSH, Python 3, Wireshark and tshark, Gi
 LAB-LOG.md        index of daily lab entries, newest first
 lab-log/          one write-up per day, plus TEMPLATE.md
 redhat-3/         Linux administration labs, one folder per lab
+Cyber-Security/   security track labs, one folder per topic
 ```
