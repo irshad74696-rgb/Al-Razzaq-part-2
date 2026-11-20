@@ -1,0 +1,29 @@
+# crontab.example: sample schedule for the backup scripts.
+# Install with:  crontab crontab.example   (this REPLACES your current crontab;
+#                use `crontab -e` and paste the lines to add to an existing one)
+#
+# Replace /home/YOURUSER with your real home folder. Cron often does not set
+# $USER, so /home/$USER/... becomes /home//... and fails. Write the full path.
+#
+# Fields: minute  hour  day-of-month  month  day-of-week  command
+#         0-59    0-23  1-31          1-12   0-7 (0 and 7 = Sunday)
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+MAILTO=""
+
+# Every day at 02:00
+0 2 * * *      /home/YOURUSER/scripts/scheduled_backup.sh
+
+# Every 30 minutes, 09:00 to 17:30, Monday to Friday (the lock stops overlaps)
+*/30 9-17 * * 1-5   /home/YOURUSER/scripts/scheduled_backup.sh
+
+# Sundays at midnight, the simple one-folder backup, output kept in a log
+0 0 * * 0      /home/YOURUSER/scripts/backup_script.sh >> /home/YOURUSER/backup_script.log 2>&1
+
+# 1st of the month at 03:00: delete only this lab's own logs older than 30 days.
+# (Never point a -delete at your whole home folder.)
+0 3 1 * *      find /home/YOURUSER -maxdepth 1 -type f \( -name 'cron_backup.log' -o -name 'cron_test.log' \) -mtime +30 -delete
+
+# Testing only: runs every minute. Remove it after a few minutes.
+# * * * * *    /home/YOURUSER/scripts/test_cron.sh

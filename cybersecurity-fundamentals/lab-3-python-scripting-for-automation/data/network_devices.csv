@@ -1,0 +1,5 @@
+name,ip_address,status
+server1,192.168.1.10,active
+server2,192.168.1.11,inactive
+server3,192.168.1.12,active
+firewall1,192.168.1.1,active
