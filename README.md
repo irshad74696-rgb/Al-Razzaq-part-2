@@ -10,13 +10,13 @@ Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm
 | --- | --- | --- |
 | Linux system administration | Shell, files and permissions, users, processes, systemd services and timers, SSH, networking, storage, SELinux | [`redhat-3/`](redhat-3/README.md), [Lab Log](LAB-LOG.md) |
 | Containers | Podman, Containerfiles, ports, volumes and bind mounts | [Lab Log](LAB-LOG.md) (lab folders coming soon) |
-| Cyber Security | Linux command-line basics and permissions, Python automation for security tasks, packet analysis with Wireshark | [`Cyber-Security/`](Cyber-Security/linux-command-line-basics/README.md), [Lab Log](LAB-LOG.md) |
+| Cyber Security | Linux command-line basics and permissions, PowerShell fundamentals, Python automation for security tasks, packet analysis with Wireshark | [`linux-command-line-basics/`](Cyber-Security/linux-command-line-basics/README.md), [`powershell-fundamentals/`](Cyber-Security/powershell-fundamentals/README.md), [Lab Log](LAB-LOG.md) |
 | Cloud computing | Planned | |
 | Artificial intelligence | Planned | |
 
 ## Tools used
 
-Ubuntu 25.10, Bash, Podman, systemd, OpenSSH, Python 3, Wireshark and tshark, Git.
+Ubuntu 25.10, Bash, PowerShell 7, Podman, systemd, OpenSSH, Python 3, Wireshark and tshark, Git.
 
 ## Repository layout
 
