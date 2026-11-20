@@ -26,7 +26,7 @@ Most security work is repetitive: read an inventory, write an event to a log, cl
 ## 1. Quick start
 
 ```bash
-cd Cyber-Security/python-automation
+cd cybersecurity-fundamentals/python-automation
 
 python3 scripts/file_reader.py                  # print the device inventory
 python3 scripts/log_writer.py                   # append sample events to logs/security.log

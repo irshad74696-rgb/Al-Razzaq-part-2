@@ -5,7 +5,7 @@
 | **Track** | Cyber Security (foundations) |
 | **Status** | Done (my own terminal output and screenshots still to add) |
 | **Environment** | Ubuntu Linux, PowerShell 7 (`pwsh`) |
-| **Lab folder** | [`Cyber-Security/powershell-fundamentals/`](../Cyber-Security/powershell-fundamentals/README.md) |
+| **Lab folder** | [`cybersecurity-fundamentals/powershell-fundamentals/`](../cybersecurity-fundamentals/powershell-fundamentals/README.md) |
 
 ## What the lab covered
 
@@ -31,7 +31,7 @@ for ($i = 1; $i -le 10; $i++) { New-Item -ItemType File -Path "test_$i.txt" -Val
 Get-ChildItem -File | Sort-Object Length -Descending | Select-Object -First 5
 ```
 
-Scripts: [`new-project-scaffold.ps1`](../Cyber-Security/powershell-fundamentals/scripts/new-project-scaffold.ps1), [`get-system-report.ps1`](../Cyber-Security/powershell-fundamentals/scripts/get-system-report.ps1), [`organize-by-extension.ps1`](../Cyber-Security/powershell-fundamentals/scripts/organize-by-extension.ps1), [`test-lab-setup.ps1`](../Cyber-Security/powershell-fundamentals/scripts/test-lab-setup.ps1).
+Scripts: [`new-project-scaffold.ps1`](../cybersecurity-fundamentals/powershell-fundamentals/scripts/new-project-scaffold.ps1), [`get-system-report.ps1`](../cybersecurity-fundamentals/powershell-fundamentals/scripts/get-system-report.ps1), [`organize-by-extension.ps1`](../cybersecurity-fundamentals/powershell-fundamentals/scripts/organize-by-extension.ps1), [`test-lab-setup.ps1`](../cybersecurity-fundamentals/powershell-fundamentals/scripts/test-lab-setup.ps1).
 
 ## What broke and how I fixed it
 

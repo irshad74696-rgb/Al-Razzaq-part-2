@@ -5,7 +5,7 @@
 | **Track** | Cyber Security |
 | **Status** | Done, finished on [2026-11-20](2026-11-20-python-automation.md) |
 | **Environment** | Ubuntu 25.10, Python 3 |
-| **Lab folder** | [`Cyber-Security/python-automation/`](../Cyber-Security/python-automation/README.md) |
+| **Lab folder** | [`cybersecurity-fundamentals/python-automation/`](../cybersecurity-fundamentals/python-automation/README.md) |
 
 > Backfilled entry, written from my notes after the fact.
 

@@ -5,7 +5,7 @@
 | **Track** | Cyber Security (foundations) |
 | **Status** | Done (my own terminal output and screenshots still to add) |
 | **Environment** | Ubuntu Linux, Python 3, standard library only |
-| **Lab folder** | [`Cyber-Security/python-automation/`](../Cyber-Security/python-automation/README.md) |
+| **Lab folder** | [`cybersecurity-fundamentals/python-automation/`](../cybersecurity-fundamentals/python-automation/README.md) |
 
 > Completes the work started on [2026-10-05](2026-10-05-python-scripting-automation.md), which covered only the file reader and log writer.
 
@@ -16,7 +16,7 @@ Reading a CSV inventory and writing timestamped security logs with `with open()`
 ## Commands and configs used
 
 ```bash
-cd Cyber-Security/python-automation
+cd cybersecurity-fundamentals/python-automation
 python3 scripts/file_reader.py                       # table of devices from data/network_devices.csv
 python3 scripts/log_writer.py --event WARNING "Port scan from 10.0.0.5"
 python3 scripts/folder_cleanup.py --make-sample      # practice files in temp_files/

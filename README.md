@@ -10,7 +10,7 @@ Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm
 | --- | --- | --- |
 | Linux system administration | Shell, files and permissions, users, processes, systemd services and timers, SSH, networking, storage, SELinux | [`redhat-3/`](redhat-3/README.md), [Lab Log](LAB-LOG.md) |
 | Containers | Podman, Containerfiles, ports, volumes and bind mounts | [Lab Log](LAB-LOG.md) (lab folders coming soon) |
-| Cyber Security | Linux command-line basics and permissions, PowerShell fundamentals, Python automation for security tasks, packet analysis with Wireshark | [`linux-command-line-basics/`](Cyber-Security/linux-command-line-basics/README.md), [`powershell-fundamentals/`](Cyber-Security/powershell-fundamentals/README.md), [`python-automation/`](Cyber-Security/python-automation/README.md), [Lab Log](LAB-LOG.md) |
+| Cyber Security | Linux command-line basics and permissions, PowerShell fundamentals, Python automation for security tasks, packet analysis with Wireshark | [`cybersecurity-fundamentals/`](cybersecurity-fundamentals/README.md): [`linux-command-line-basics/`](cybersecurity-fundamentals/linux-command-line-basics/README.md), [`powershell-fundamentals/`](cybersecurity-fundamentals/powershell-fundamentals/README.md), [`python-automation/`](cybersecurity-fundamentals/python-automation/README.md), [Lab Log](LAB-LOG.md) |
 | Cloud computing | Planned | |
 | Artificial intelligence | Planned | |
 
@@ -21,8 +21,11 @@ Ubuntu 25.10, Bash, PowerShell 7, Podman, systemd, OpenSSH, Python 3, Wireshark 
 ## Repository layout
 
 ```
-LAB-LOG.md        index of daily lab entries, newest first
-lab-log/          one write-up per day, plus TEMPLATE.md
-redhat-3/         Linux administration labs, one folder per lab
-Cyber-Security/   security track labs, one folder per topic
+LAB-LOG.md                    index of daily lab entries, newest first
+lab-log/                      one write-up per day, plus TEMPLATE.md
+redhat-3/                     Linux administration labs, one folder per lab
+cybersecurity-fundamentals/   security fundamentals labs, one folder per topic
+  linux-command-line-basics/    navigation, files, permissions + practice scripts
+  powershell-fundamentals/      cmdlets, file management, scripting basics
+  python-automation/            Python tools for security tasks, with sample data
 ```

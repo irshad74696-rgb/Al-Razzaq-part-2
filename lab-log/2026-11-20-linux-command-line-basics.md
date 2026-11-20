@@ -5,7 +5,7 @@
 | **Track** | Cyber Security (foundations) |
 | **Status** | Done (my own terminal output and screenshots still to add) |
 | **Environment** | Ubuntu Linux, Bash |
-| **Lab folder** | [`Cyber-Security/linux-command-line-basics/`](../Cyber-Security/linux-command-line-basics/README.md) |
+| **Lab folder** | [`cybersecurity-fundamentals/linux-command-line-basics/`](../cybersecurity-fundamentals/linux-command-line-basics/README.md) |
 
 ## What the lab covered
 
@@ -36,7 +36,7 @@ ls -ld vault                 # the folder's own permissions
 sudo chown root:root hello.sh && sudo chown "$USER":"$USER" hello.sh
 ```
 
-Practice scripts: [`build-practice-area.sh`](../Cyber-Security/linux-command-line-basics/scripts/build-practice-area.sh), [`hello.sh`](../Cyber-Security/linux-command-line-basics/scripts/hello.sh), [`permissions-demo.sh`](../Cyber-Security/linux-command-line-basics/scripts/permissions-demo.sh).
+Practice scripts: [`build-practice-area.sh`](../cybersecurity-fundamentals/linux-command-line-basics/scripts/build-practice-area.sh), [`hello.sh`](../cybersecurity-fundamentals/linux-command-line-basics/scripts/hello.sh), [`permissions-demo.sh`](../cybersecurity-fundamentals/linux-command-line-basics/scripts/permissions-demo.sh).
 
 ## What broke and how I fixed it
 
