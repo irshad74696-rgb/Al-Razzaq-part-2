@@ -3,9 +3,9 @@
 | | |
 | --- | --- |
 | **Track** | Cyber Security |
-| **Status** | In progress (file reader and log writer scripts done) |
+| **Status** | Done, finished on [2026-11-20](2026-11-20-python-automation.md) |
 | **Environment** | Ubuntu 25.10, Python 3 |
-| **Lab folder** | `Cyber-Security/cybersecurity-foundation/python-scripting-for-automation/` (local; not uploaded yet) |
+| **Lab folder** | [`Cyber-Security/python-automation/`](../Cyber-Security/python-automation/README.md) |
 
 > Backfilled entry, written from my notes after the fact.
 

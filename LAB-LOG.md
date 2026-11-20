@@ -6,12 +6,13 @@ Newest entries are at the top. The "what broke" sections are deliberate: debuggi
 
 | Date | Track | Lab | Outcome |
 | --- | --- | --- | --- |
+| 2026-11-20 | Cyber Security | [Python scripting for security automation](lab-log/2026-11-20-python-automation.md) | File I/O with `with open()`, error handling, a dry-run-first folder cleanup, simulated network monitor and password checker; [lab folder](Cyber-Security/python-automation/README.md) with five scripts |
 | 2026-11-20 | Cyber Security | [PowerShell fundamentals on Linux](lab-log/2026-11-20-powershell-fundamentals.md) | Cmdlet discovery, `*-Item` file management, variables, conditions and loops; [lab folder](Cyber-Security/powershell-fundamentals/README.md) with four scripts |
 | 2026-11-20 | Cyber Security | [Linux command-line basics](lab-log/2026-11-20-linux-command-line-basics.md) | Navigation, file management, `chmod`/`chown` and directory permissions; [lab folder](Cyber-Security/linux-command-line-basics/README.md) with practice scripts |
 | 2026-11-20 | Cyber Security | [Packet analysis with Wireshark and tshark](lab-log/2026-11-20-wireshark-packet-analysis.md) | Captured live traffic, filtered HTTP/TCP/DNS, and exported reports with `tshark -z` |
 | 2026-10-19 | Linux | [Scheduling jobs with systemd timers](lab-log/2026-10-19-systemd-timers.md) | In progress: service and timer units written; results still to record |
 | 2026-10-11 | Linux / Cyber Security | [Hardening the SSH server](lab-log/2026-10-11-ssh-hardening.md) | sshd on port 2222, root and password logins off, key-only login for one user |
-| 2026-10-05 | Cyber Security | [Python scripting for security automation](lab-log/2026-10-05-python-scripting-automation.md) | CSV inventory reader and timestamped security log writer working |
+| 2026-10-05 | Cyber Security | [Python scripting for security automation](lab-log/2026-10-05-python-scripting-automation.md) | CSV inventory reader and timestamped security log writer working; finished on [2026-11-20](lab-log/2026-11-20-python-automation.md) |
 | 2026-10-04 | Containers | [Podman: Containerfile instructions, ports and storage](lab-log/2026-10-04-podman-containerfile-labs.md) | Four labs: ADD vs COPY, ENTRYPOINT/CMD, EXPOSE and `-p`, volumes and bind mounts |
 
 ## Adding a new day
