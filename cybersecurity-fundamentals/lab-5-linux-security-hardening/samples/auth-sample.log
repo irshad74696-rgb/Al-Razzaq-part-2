@@ -1,0 +1,19 @@
+Nov 21 09:58:01 lab-host sshd-session[4101]: Invalid user admin from 203.0.113.45 port 51122
+Nov 21 09:58:03 lab-host sshd-session[4101]: Failed password for invalid user admin from 203.0.113.45 port 51122 ssh2
+Nov 21 09:58:07 lab-host sshd-session[4103]: Failed password for root from 203.0.113.45 port 51130 ssh2
+Nov 21 09:58:11 lab-host sshd-session[4105]: Failed password for root from 203.0.113.45 port 51136 ssh2
+Nov 21 09:58:15 lab-host sshd-session[4107]: Invalid user oracle from 203.0.113.45 port 51140
+Nov 21 09:58:16 lab-host sshd-session[4107]: Failed password for invalid user oracle from 203.0.113.45 port 51140 ssh2
+Nov 21 09:58:20 lab-host sshd-session[4109]: Failed password for invalid user test from 203.0.113.45 port 51144 ssh2
+Nov 21 10:02:41 lab-host sshd-session[4180]: Failed publickey for labuser from 198.51.100.7 port 40022 ssh2: ED25519 SHA256:exampleexampleexampleexampleexample
+Nov 21 10:02:44 lab-host sshd-session[4180]: Accepted publickey for labuser from 198.51.100.7 port 40022 ssh2: ED25519 SHA256:exampleexampleexampleexampleexample
+Nov 21 10:05:12 lab-host sshd-session[4222]: Failed password for invalid user ubuntu from 192.0.2.99 port 60001 ssh2
+Nov 21 10:05:13 lab-host sshd-session[4222]: Connection closed by invalid user ubuntu 192.0.2.99 port 60001 [preauth]
+Nov 21 10:10:00 lab-host sudo[4300]:  labuser : TTY=pts/0 ; PWD=/home/labuser ; USER=root ; COMMAND=/usr/sbin/ufw status verbose
+Nov 21 10:11:30 lab-host sudo[4310]:  labuser : TTY=pts/0 ; PWD=/home/labuser ; USER=root ; COMMAND=/usr/bin/journalctl -u ssh
+Nov 21 10:12:02 lab-host sudo[4320]: pam_unix(sudo:auth): authentication failure; logname=labuser uid=1000 euid=0 tty=/dev/pts/1 ruser=labuser rhost=  user=labuser
+Nov 21 10:12:05 lab-host sudo[4320]:  labuser : 1 incorrect password attempt ; TTY=pts/1 ; PWD=/home/labuser ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow
+Nov 21 10:15:44 lab-host kernel: [UFW BLOCK] IN=wlo1 OUT= MAC=00:00:00:00:00:00 SRC=203.0.113.45 DST=192.168.1.20 LEN=44 TOS=0x00 PREC=0x00 TTL=50 ID=0 PROTO=TCP SPT=40000 DPT=23 WINDOW=1024 RES=0x00 SYN URGP=0
+Nov 21 10:15:44 lab-host kernel: [UFW BLOCK] IN=wlo1 OUT= MAC=00:00:00:00:00:00 SRC=203.0.113.45 DST=192.168.1.20 LEN=44 TOS=0x00 PREC=0x00 TTL=50 ID=0 PROTO=TCP SPT=40001 DPT=3389 WINDOW=1024 RES=0x00 SYN URGP=0
+Nov 21 10:15:45 lab-host kernel: [UFW BLOCK] IN=wlo1 OUT= MAC=00:00:00:00:00:00 SRC=203.0.113.45 DST=192.168.1.20 LEN=44 TOS=0x00 PREC=0x00 TTL=50 ID=0 PROTO=TCP SPT=40002 DPT=445 WINDOW=1024 RES=0x00 SYN URGP=0
+Nov 21 10:20:09 lab-host kernel: [UFW BLOCK] IN=wlo1 OUT= MAC=00:00:00:00:00:00 SRC=198.51.100.200 DST=192.168.1.20 LEN=60 TOS=0x00 PREC=0x00 TTL=55 ID=0 PROTO=TCP SPT=50211 DPT=3306 WINDOW=64240 RES=0x00 SYN URGP=0
