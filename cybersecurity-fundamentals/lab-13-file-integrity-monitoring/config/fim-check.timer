@@ -1,0 +1,12 @@
+# fim-check.timer: run fim-check.service every 15 minutes, and 2 minutes after boot.
+[Unit]
+Description=Run the file integrity check every 15 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=15min
+RandomizedDelaySec=60
+Persistent=true
+
+[Install]
+WantedBy=timers.target

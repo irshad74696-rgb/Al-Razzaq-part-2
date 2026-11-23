@@ -1,0 +1,98 @@
+# Sample output from the test run in a throwaway Linux container (not my own machine).
+# Changes were made on purpose: a sudoers drop-in, a setuid bit on /usr/bin/id,
+# a new program in /usr/local/bin and an edit to /etc/hosts. Trimmed for length.
+
+########## Hash comparison ##########
+File integrity report - 2026-11-23T03:20:01+00:00 - vm
+Baseline: /var/lib/fim/critical-baseline.tsv
+Folders:  /etc /usr/bin /usr/sbin /usr/local/bin /home/labuser/secure_files
+Files in baseline: 2638   files now: 2640
+
+4 change(s):
+  MODIFIED  /etc/hosts  (sha256 d343af6b2baf... -> 1542098795de...)
+  NEW       /etc/sudoers.d/zz-test  (mode 644, root:root)
+  PERMS     /usr/bin/id  (mode 755 -> 4755)
+  NEW       /usr/local/bin/sshd-helper  (mode 755, root:root)
+
+Report saved: /var/lib/fim/reports/integrity_20261123_032001.txt
+
+########## auditd events (today) ##########
+File integrity audit report - test-vm - 2026-11-23T03:20:01+00:00
+Window: today
+
+== Events per key ==
+  KEY            EVENTS
+  audit_config   13
+  audit_tools    25
+  binaries       19
+  identity       44
+  persistence    27
+  privilege      15
+  sshd_config    3
+  secure_files   42
+  TOTAL          188
+
+== Latest 5 for key: audit_config ==
+  At 03:17:36 11/23/26 system, acting as root, successfully opened-file /etc/audit/rules.d/51-fim-demo.rules using /usr/bin/tee
+  At 03:17:36 11/23/26 system, acting as root, successfully changed-file-permissions-of /etc/audit/rules.d/51-fim-demo.rules to 0640 using /usr/bin/chmod
+  At 03:17:36 11/23/26 system, acting as root, successfully opened-file /etc/audit/audit.rules.prev using /usr/bin/cp
+  At 03:17:36 11/23/26 system, acting as root, successfully opened-file /etc/audit/audit.rules using /usr/bin/cp
+  At 03:17:36 11/23/26 system, acting as root, successfully changed-file-permissions-of /etc/audit/audit.rules to 0640 using /usr/bin/chmod
+
+== Latest 5 for key: audit_tools ==
+  At 03:17:36 11/23/26 system, acting as root, successfully executed /usr/sbin/auditctl 
+  At 03:17:36 11/23/26 system, acting as root, successfully executed /usr/sbin/auditctl 
+  At 03:17:46 11/23/26 system, acting as root, successfully executed /usr/sbin/auditctl 
+  At 03:17:55 11/23/26 system, acting as root, successfully executed /usr/sbin/auditctl 
+  At 03:18:01 11/23/26 system, acting as root, successfully executed /usr/sbin/auditctl 
+
+== Latest 5 for key: binaries ==
+  At 03:17:45 11/23/26 system, acting as root, successfully opened-file /usr/local/bin/backdoor using /usr/bin/touch
+  At 03:17:45 11/23/26 system, acting as root, successfully deleted /usr/local/bin/backdoor using /usr/bin/rm
+  At 03:19:46 11/23/26 system, acting as root, successfully changed-file-permissions-of /usr/bin/id to suid,0755 using /usr/bin/chmod
+  At 03:19:46 11/23/26 system, acting as root, successfully opened-file /usr/local/bin/sshd-helper using /usr/bin/cp
+
+== Latest 5 for key: identity ==
+  At 03:17:45 11/23/26 system, acting as root, successfully opened-file /etc/gshadow using /usr/sbin/userdel
+  At 03:17:45 11/23/26 system, acting as root, successfully renamed /etc/passwd+ to /etc/passwd using /usr/sbin/userdel
+  At 03:17:45 11/23/26 system, acting as root, successfully renamed /etc/shadow+ to /etc/shadow using /usr/sbin/userdel
+  At 03:17:45 11/23/26 system, acting as root, successfully renamed /etc/group+ to /etc/group using /usr/sbin/userdel
+  At 03:17:45 11/23/26 system, acting as root, successfully renamed /etc/gshadow+ to /etc/gshadow using /usr/sbin/userdel
+
+== Latest 5 for key: persistence ==
+  At 03:17:45 11/23/26 system, acting as root, successfully opened-file /etc/cron.d/evil using bash
+  At 03:17:45 11/23/26 system, acting as root, successfully deleted /etc/cron.d/evil using /usr/bin/rm
+
+== Latest 5 for key: privilege ==
+  At 03:19:46 11/23/26 system, acting as root, successfully opened-file /etc/sudoers.d/zz-test using bash
+
+== Latest 5 for key: sshd_config ==
+
+== Latest 5 for key: secure_files ==
+  At 03:20:01 11/23/26 system, acting as root, successfully opened-file /home/labuser/secure_files/config.conf using bash
+  At 03:20:01 11/23/26 system, acting as root, successfully opened-file /home/labuser/secure_files/link using /usr/bin/readlink
+  At 03:20:01 11/23/26 system, acting as root, successfully opened-file /home/labuser/secure_files/sub/a using bash
+  At 03:20:01 11/23/26 system, acting as root, successfully opened-file /home/labuser/secure_files/sub/ab using bash
+  At 03:20:01 11/23/26 system, acting as root, successfully opened-file /home/labuser/secure_files/back\slash using bash
+
+== Failed file access (permission denied) ==
+  1. 11/23/26 03:17:36 /etc/audit mkdir no /usr/bin/mkdir unset 84
+  2. 11/23/26 03:19:14 /home/labuser/secure_files readlink no /usr/bin/realpath unset 173
+  3. 11/23/26 03:19:14 /home/labuser/secure_files readlink no /usr/bin/realpath unset 174
+
+== Authentication summary ==
+  
+  Authentication Summary Report
+  =============================
+  total  acct
+  =============================
+  <no events of interest were found>
+  
+
+== Audit health ==
+  enabled 1
+  lost 0
+  backlog 0
+
+Combined report: /var/lib/fim/reports/security_report_20261123_031946.txt
+  [WARN] file changes found: review them, then re-run 'baseline' to accept

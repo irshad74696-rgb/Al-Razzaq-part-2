@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="t d">
+  <title id="t">File Integrity Monitoring on Linux</title>
+  <desc id="d">Three tools answer three questions: auditd tells you who changed a file, a SHA-256 baseline tells you what changed, and inotify tells you the moment it happens. Below, four planted changes that were detected.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111c33"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1c2a47" stroke-width="1"/>
+    </pattern>
+    <style>
+      .h  { font: 700 46px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #f1f5f9; }
+      .sub{ font: 400 22px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+      .q  { font: 800 30px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; }
+      .tool{ font: 700 22px 'DejaVu Sans Mono', Consolas, monospace; fill: #e2e8f0; }
+      .p  { font: 400 17px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #cbd5e1; }
+      .mono{ font: 400 16px 'DejaVu Sans Mono', Consolas, monospace; fill: #cbd5e1; }
+      .tag { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; }
+      .foot{ font: 600 18px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect width="1200" height="627" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- shield mark -->
+  <g transform="translate(60 44)">
+    <path d="M28 0 L56 10 V30 C56 48 44 60 28 66 C12 60 0 48 0 30 V10 Z" fill="#0ea5e9" opacity="0.18" stroke="#38bdf8" stroke-width="2.5"/>
+    <path d="M16 33 L25 42 L41 24" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="136" y="82" class="h">File Integrity Monitoring on Linux</text>
+  <text x="136" y="116" class="sub">Three open-source tools, three questions an incident responder asks</text>
+
+  <!-- card 1: WHO -->
+  <g transform="translate(60 150)">
+    <rect width="340" height="210" rx="16" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="24" y="48" class="q" fill="#f59e0b">WHO?</text>
+    <text x="24" y="84" class="tool">auditd</text>
+    <text x="24" y="118" class="p">Kernel watch rules record the</text>
+    <text x="24" y="142" class="p">user, the program and the result</text>
+    <text x="24" y="166" class="p">for every write or chmod on</text>
+    <text x="24" y="190" class="p">/etc, sudoers, cron and /usr/bin.</text>
+  </g>
+
+  <!-- card 2: WHAT -->
+  <g transform="translate(430 150)">
+    <rect width="340" height="210" rx="16" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="24" y="48" class="q" fill="#22c55e">WHAT?</text>
+    <text x="24" y="84" class="tool">SHA-256 baseline</text>
+    <text x="24" y="118" class="p">Hash every file while it is</text>
+    <text x="24" y="142" class="p">known good, then compare content,</text>
+    <text x="24" y="166" class="p">permissions and owner. A setuid</text>
+    <text x="24" y="190" class="p">bit never changes the hash.</text>
+  </g>
+
+  <!-- card 3: NOW -->
+  <g transform="translate(800 150)">
+    <rect width="340" height="210" rx="16" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="24" y="48" class="q" fill="#38bdf8">NOW!</text>
+    <text x="24" y="84" class="tool">inotifywait</text>
+    <text x="24" y="118" class="p">Real-time alert the moment a</text>
+    <text x="24" y="142" class="p">file is created, written, moved</text>
+    <text x="24" y="166" class="p">or deleted. Deletes and moves</text>
+    <text x="24" y="190" class="p">are flagged CRITICAL.</text>
+  </g>
+
+  <!-- terminal: detections -->
+  <g transform="translate(60 388)">
+    <rect width="1080" height="170" rx="14" fill="#020617" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="26" cy="22" r="6" fill="#ef4444"/>
+    <circle cx="46" cy="22" r="6" fill="#f59e0b"/>
+    <circle cx="66" cy="22" r="6" fill="#22c55e"/>
+    <text x="92" y="27" class="mono" fill="#64748b" style="fill:#64748b">$ sudo ./critical_dirs_monitor.sh report    # 4 planted changes, 4 caught</text>
+    <text x="26" y="64"  class="tag" fill="#f59e0b">NEW     </text><text x="130" y="64"  class="mono">/etc/sudoers.d/zz-test</text>
+    <text x="560" y="64" class="mono" style="fill:#64748b">opened-file ... using bash</text>
+    <text x="26" y="94"  class="tag" fill="#ef4444">PERMS   </text><text x="130" y="94"  class="mono">/usr/bin/id   755 -&gt; 4755</text>
+    <text x="560" y="94" class="mono" style="fill:#64748b">changed-permissions to suid using chmod</text>
+    <text x="26" y="124" class="tag" fill="#f59e0b">NEW     </text><text x="130" y="124" class="mono">/usr/local/bin/sshd-helper</text>
+    <text x="560" y="124" class="mono" style="fill:#64748b">opened-file ... using cp</text>
+    <text x="26" y="154" class="tag" fill="#38bdf8">MODIFIED</text><text x="130" y="154" class="mono">/etc/hosts</text>
+    <text x="560" y="154" class="mono" style="fill:#64748b">sha256 d343af6b... -&gt; 15420987...</text>
+  </g>
+
+  <text x="60" y="596" class="foot">Irshad Ali Chauhan  ·  Linux security labs</text>
+  <text x="1140" y="596" class="foot" text-anchor="end">#BlueTeam  #auditd  #Linux</text>
+</svg>
