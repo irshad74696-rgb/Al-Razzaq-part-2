@@ -1,0 +1,71 @@
+# Output of the lab's test steps, run with the scripts in this folder (2026-11-23, Python 3.13, cryptography 50.0.1).
+# Passwords are piped with --password-stdin so the run is repeatable; a throwaway test password was used.
+# Run normally, the scripts prompt for the password and do not echo it.
+
+$ python3 hash_calculator.py -v testfile.txt
+f6224e122c8201d490de63dd4fa8679a8120047bf78b42272cb5618b2b53c133  testfile.txt
+  sha256: 64 hex characters = 256 bits
+
+$ python3 integrity_checker.py add testfile.txt
+Added: testfile.txt  f6224e122c8201d4...
+
+$ python3 integrity_checker.py verify testfile.txt
+OK           /home/student/crypto_lab/testfile.txt
+
+$ echo "Modified" >> testfile.txt
+
+$ python3 integrity_checker.py verify testfile.txt
+MODIFIED     /home/student/crypto_lab/testfile.txt
+  expected f6224e122c8201d490de63dd4fa8679a8120047bf78b42272cb5618b2b53c133
+  found    be464f88eb11b596fa089dad03d2e9552fc25ec3e4e8d8638ee2f076592ebce9
+
+$ printf "hello lab\n" | python3 text_encryptor.py demo
+Key saved to secret.key (mode 600). Back it up; without it nothing encrypted with it can be recovered.
+Text to encrypt: 
+Encrypted token:
+gAAAAABrBND58E1OFlcUEpc93CoBhrq1Zwk7QxNn5nBTSW7cquSHJVMd0XGX8JXUzMUS5HNiVNHSCNJE8UgQVMI09f51SsIM4Q==
+
+Decrypted: hello lab
+Round trip OK
+
+$ echo "Confidential data" > secret.txt
+
+$ printf 'Lab14Pass!\n' | python3 file_encryptor.py encrypt --password-stdin secret.txt secret.enc
+Encrypted secret.txt (18 bytes) -> secret.enc
+The original is still there. Delete it yourself once you have checked the encrypted copy decrypts.
+
+$ printf 'Lab14Pass!\n' | python3 file_encryptor.py decrypt --password-stdin secret.enc recovered.txt
+Decrypted secret.enc -> recovered.txt (18 bytes)
+
+$ cat recovered.txt
+Confidential data
+
+$ printf 'WrongPass1\n' | python3 file_encryptor.py decrypt --password-stdin secret.enc wrong.txt
+Decryption failed: wrong password, or the file was modified
+
+$ echo "Report 1" > report1.txt
+
+$ printf 'Lab14Pass!\n' | python3 vault_manager.py --password-stdin store report1.txt
+Stored report1.txt (9 bytes) as a79584bd8643598c58bb5f15bef08cba.enc
+  SHA-256 88e66961b3d822f15d7c3556afd66afa27532521d4581b3f8ae8f94b90ee093a
+
+$ python3 vault_manager.py list
+File                              Size  Stored (UTC)               SHA-256
+report1.txt                          9  2026-11-23T23:49:14+00:00  88e66961b3d822f1...
+
+1 file(s) in /home/student/crypto_lab/secure_vault
+
+$ printf 'Lab14Pass!\n' | python3 vault_manager.py --password-stdin retrieve report1.txt recovered_report.txt
+Retrieved report1.txt -> recovered_report.txt
+Integrity verified: SHA-256 matches the stored hash
+
+$ python3 security_audit.py . -o ../audit_report.json
+Security audit of /home/student/crypto_lab
+Files scanned: 17   HIGH 1  MEDIUM 2  LOW 2
+  [HIGH  ] world-writable               testfile.txt: any user can change this file (-rw-rw-rw-)
+  [MEDIUM] plaintext-next-to-encrypted  secret.txt: unencrypted copy next to secret.enc
+  [MEDIUM] secret-file                  secret.key: key or secret file stored here; keep it out of backups and version control
+  [LOW   ] duplicate                    recovered.txt: 2 identical copies: recovered.txt, secret.txt
+  [LOW   ] duplicate                    recovered_report.txt: 2 identical copies: recovered_report.txt, report1.txt
+Report saved to ../audit_report.json (mode 600)
+

@@ -1,0 +1,191 @@
+{
+  "timestamp": "2026-11-23T23:49:14+00:00",
+  "directory": "/home/student/crypto_lab",
+  "files_scanned": 17,
+  "file_hashes": {
+    "/home/student/crypto_lab/crypto_common.py": {
+      "sha256": "194baeb9d567f27b8473b50e86e19d0e818498e1f0541ff59a8c25fc0f0445ee",
+      "size": 5888,
+      "permissions": "-rw-r--r--",
+      "mode": "0o644",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/file_encryptor.py": {
+      "sha256": "a49bb990d8be0692991e77990d6f9f3ffa961ccc5cca699d8096dca4770e8b55",
+      "size": 3926,
+      "permissions": "-rwxr-xr-x",
+      "mode": "0o755",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/hash_calculator.py": {
+      "sha256": "ed293a9c31959d06cad0fc23dd614d767b6862949862831eb02d1d9f06ac41e5",
+      "size": 2852,
+      "permissions": "-rwxr-xr-x",
+      "mode": "0o755",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/integrity.json": {
+      "sha256": "62627ca109a3b93455c9e9511a252f15a1deec3119f3e990f0baef7be77f7f9f",
+      "size": 272,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/integrity_checker.py": {
+      "sha256": "5a63e81d552228d68836902ede3b0b3873992b678e110ed8b44ee1fddb8d6dcd",
+      "size": 6201,
+      "permissions": "-rwxr-xr-x",
+      "mode": "0o755",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/recovered.txt": {
+      "sha256": "263e5bed073d3c5d4f674cb6fd9d7b6e82afcac35ac55e2924caf5058e0d6407",
+      "size": 18,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:14+00:00"
+    },
+    "/home/student/crypto_lab/recovered_report.txt": {
+      "sha256": "88e66961b3d822f15d7c3556afd66afa27532521d4581b3f8ae8f94b90ee093a",
+      "size": 9,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:14+00:00"
+    },
+    "/home/student/crypto_lab/report1.txt": {
+      "sha256": "88e66961b3d822f15d7c3556afd66afa27532521d4581b3f8ae8f94b90ee093a",
+      "size": 9,
+      "permissions": "-rw-r--r--",
+      "mode": "0o644",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:14+00:00"
+    },
+    "/home/student/crypto_lab/secret.enc": {
+      "sha256": "7b23abab4613c3f1e8462aee9d02c408fd060d6747067a8bff439e427bdc98b7",
+      "size": 104,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/secret.key": {
+      "sha256": "0fa2c026d30615be4467fab5262bb41353e366cfdc882dff1a329cdd6e8b8bcf",
+      "size": 44,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/secret.txt": {
+      "sha256": "263e5bed073d3c5d4f674cb6fd9d7b6e82afcac35ac55e2924caf5058e0d6407",
+      "size": 18,
+      "permissions": "-rw-r--r--",
+      "mode": "0o644",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/security_audit.py": {
+      "sha256": "302fc2c90808547753fa1243ee33f1a233e9f6513f67792f1802e58c8d686528",
+      "size": 11052,
+      "permissions": "-rwxr-xr-x",
+      "mode": "0o755",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/testfile.txt": {
+      "sha256": "be464f88eb11b596fa089dad03d2e9552fc25ec3e4e8d8638ee2f076592ebce9",
+      "size": 38,
+      "permissions": "-rw-rw-rw-",
+      "mode": "0o666",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/text_encryptor.py": {
+      "sha256": "c286ca210a3fa46a745d07be7a22bf90fab5ca402f678442bb2de261d57a0df3",
+      "size": 5005,
+      "permissions": "-rwxr-xr-x",
+      "mode": "0o755",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/vault_manager.py": {
+      "sha256": "49a17a06e31738d9efb3e3bb57e4c56bfaa45aba7d0f12b2b19c5c7302e22a5d",
+      "size": 7634,
+      "permissions": "-rwxr-xr-x",
+      "mode": "0o755",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:13+00:00"
+    },
+    "/home/student/crypto_lab/secure_vault/a79584bd8643598c58bb5f15bef08cba.enc": {
+      "sha256": "ad8c42a29dd85642f22184b33dc667ccf8486e1d66045b05c29a4fb5c5ac708e",
+      "size": 88,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:14+00:00"
+    },
+    "/home/student/crypto_lab/secure_vault/vault_metadata.json": {
+      "sha256": "3adc842018ed2c30cf716d8a31cfc1c7082768839b00c925e7e34b6089ca6158",
+      "size": 212,
+      "permissions": "-rw-------",
+      "mode": "0o600",
+      "uid": 0,
+      "modified": "2026-11-23T23:49:14+00:00"
+    }
+  },
+  "warnings": [
+    {
+      "severity": "HIGH",
+      "check": "world-writable",
+      "path": "/home/student/crypto_lab/testfile.txt",
+      "detail": "any user can change this file (-rw-rw-rw-)"
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "plaintext-next-to-encrypted",
+      "path": "/home/student/crypto_lab/secret.txt",
+      "detail": "unencrypted copy next to secret.enc"
+    },
+    {
+      "severity": "MEDIUM",
+      "check": "secret-file",
+      "path": "/home/student/crypto_lab/secret.key",
+      "detail": "key or secret file stored here; keep it out of backups and version control"
+    },
+    {
+      "severity": "LOW",
+      "check": "duplicate",
+      "path": "/home/student/crypto_lab/recovered.txt",
+      "detail": "2 identical copies: recovered.txt, secret.txt"
+    },
+    {
+      "severity": "LOW",
+      "check": "duplicate",
+      "path": "/home/student/crypto_lab/recovered_report.txt",
+      "detail": "2 identical copies: recovered_report.txt, report1.txt"
+    }
+  ],
+  "errors": [],
+  "duplicates": {
+    "263e5bed073d3c5d4f674cb6fd9d7b6e82afcac35ac55e2924caf5058e0d6407": [
+      "/home/student/crypto_lab/recovered.txt",
+      "/home/student/crypto_lab/secret.txt"
+    ],
+    "88e66961b3d822f15d7c3556afd66afa27532521d4581b3f8ae8f94b90ee093a": [
+      "/home/student/crypto_lab/recovered_report.txt",
+      "/home/student/crypto_lab/report1.txt"
+    ]
+  },
+  "summary": {
+    "HIGH": 1,
+    "MEDIUM": 2,
+    "LOW": 2
+  }
+}
