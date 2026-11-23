@@ -1,6 +1,6 @@
 # Hands-on Labs: Linux, Containers and Cybersecurity
 
-Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm building skills toward a role in security operations and cloud infrastructure, and I record each lab as I go.
+Practical lab work by **Irshad Ali**, done on my own Ubuntu machine. I'm building skills toward a role in security operations and cloud infrastructure, and I record each lab as I go.
 
 **Start here: [Lab Log](LAB-LOG.md)**, a dated list of every lab with what I did, what broke, and how I fixed it.
 
