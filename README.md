@@ -1,6 +1,6 @@
 # Hands-on Labs: Linux, Containers and Cybersecurity
 
-Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm building skills toward a role in security operations and cloud infrastructure, and I record each lab as I go.
+Practical lab work by **Irshad Ali**, done on my own Ubuntu machine. I'm building skills toward a role in security operations and cloud infrastructure, and I record each lab as I go.
 
 **Start here: [Lab Log](LAB-LOG.md)**, a dated list of every lab with what I did, what broke, and how I fixed it.
 
@@ -10,7 +10,7 @@ Practical lab work by **Irshad Ali Chauhan**, done on my own Ubuntu machine. I'm
 | --- | --- | --- |
 | Linux system administration | Shell, files and permissions, users, processes, systemd services and timers, SSH, networking, storage, SELinux | [`redhat-3/`](redhat-3/README.md), [Lab Log](LAB-LOG.md) |
 | Containers | Podman, Containerfiles, ports, volumes and bind mounts | [Lab Log](LAB-LOG.md) (lab folders coming soon) |
-| Cyber Security | Linux command-line basics and permissions, PowerShell fundamentals, Python automation for security tasks, Bash scripting and cron, Linux hardening (UFW, SSH, log monitoring), packet analysis with Wireshark | [`cybersecurity-fundamentals/`](cybersecurity-fundamentals/README.md): [`lab-1-linux-command-line-basics/`](cybersecurity-fundamentals/lab-1-linux-command-line-basics/README.md), [`lab-2-powershell-fundamentals/`](cybersecurity-fundamentals/lab-2-powershell-fundamentals/README.md), [`lab-3-python-scripting-for-automation/`](cybersecurity-fundamentals/lab-3-python-scripting-for-automation/README.md), [`lab-4-bash-scripting-essentials/`](cybersecurity-fundamentals/lab-4-bash-scripting-essentials/README.md), [`lab-5-linux-security-hardening/`](cybersecurity-fundamentals/lab-5-linux-security-hardening/README.md), [Lab Log](LAB-LOG.md) |
+| Cyber Security | Linux command-line basics and permissions, PowerShell fundamentals, Python automation for security tasks, Bash scripting and cron, Linux hardening (UFW, SSH, log monitoring), file integrity monitoring (auditd, hashes, inotify), packet analysis with Wireshark | [`cybersecurity-fundamentals/`](cybersecurity-fundamentals/README.md): [`lab-1-linux-command-line-basics/`](cybersecurity-fundamentals/lab-1-linux-command-line-basics/README.md), [`lab-2-powershell-fundamentals/`](cybersecurity-fundamentals/lab-2-powershell-fundamentals/README.md), [`lab-3-python-scripting-for-automation/`](cybersecurity-fundamentals/lab-3-python-scripting-for-automation/README.md), [`lab-4-bash-scripting-essentials/`](cybersecurity-fundamentals/lab-4-bash-scripting-essentials/README.md), [`lab-5-linux-security-hardening/`](cybersecurity-fundamentals/lab-5-linux-security-hardening/README.md), [`lab-13-file-integrity-monitoring/`](cybersecurity-fundamentals/lab-13-file-integrity-monitoring/README.md), [Lab Log](LAB-LOG.md) |
 | Cloud computing | Planned | |
 | Artificial intelligence | Planned | |
 
@@ -30,4 +30,5 @@ cybersecurity-fundamentals/   security fundamentals labs, one folder per lab
   lab-3-python-scripting-for-automation/   Python security tools + sample data
   lab-4-bash-scripting-essentials/         backups, loops, cron scheduling
   lab-5-linux-security-hardening/          UFW, SSH audit, log alerts
+  lab-13-file-integrity-monitoring/        auditd rules, hash baselines, inotify
 ```

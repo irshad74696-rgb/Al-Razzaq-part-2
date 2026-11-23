@@ -1,0 +1,47 @@
+## 50-fim.rules: auditd watches for file integrity monitoring.
+##
+## Install so the rules survive a reboot (auditctl rules do not):
+##   sudo install -m 640 config/50-fim.rules /etc/audit/rules.d/50-fim.rules
+##   (delete any line whose parent folder does not exist first, e.g. /etc/ssh
+##   without openssh-server: auditctl stops at the first bad line)
+##   sudo augenrules --load
+##   sudo auditctl -l | grep -c -- '-k '     # rules now loaded
+## or let scripts/setup_auditd.sh --persist do it.
+##
+## -w PATH    watch a file, or a whole directory tree
+## -p wa      trigger on write and attribute change (chmod, chown, xattr)
+##            Reads (r) are left out on purpose for busy paths: every program
+##            start reads /usr/bin and /etc, and "r" there floods the log.
+## -k KEY     tag events so "ausearch -k KEY" finds them
+
+## Accounts, passwords and groups
+-w /etc/passwd  -p wa -k identity
+-w /etc/shadow  -p wa -k identity
+-w /etc/group   -p wa -k identity
+-w /etc/gshadow -p wa -k identity
+
+## Who may become root
+-w /etc/sudoers   -p wa -k privilege
+-w /etc/sudoers.d -p wa -k privilege
+
+## Remote access configuration
+-w /etc/ssh/sshd_config   -p wa -k sshd_config
+-w /etc/ssh/sshd_config.d -p wa -k sshd_config
+
+## Places attackers use to survive a reboot (persistence)
+-w /etc/crontab         -p wa -k persistence
+-w /etc/cron.d          -p wa -k persistence
+-w /var/spool/cron      -p wa -k persistence
+-w /etc/systemd/system  -p wa -k persistence
+-w /etc/ld.so.preload   -p wa -k persistence
+
+## System programs. Package updates will show up here too: check the "exe"
+## field (dpkg, apt) before treating an event as suspicious.
+-w /usr/bin       -p wa -k binaries
+-w /usr/sbin      -p wa -k binaries
+-w /usr/local/bin -p wa -k binaries
+
+## The audit system itself: someone hiding their tracks changes these first
+-w /etc/audit           -p wa -k audit_config
+-w /usr/sbin/auditctl   -p x  -k audit_tools
+-w /usr/sbin/auditd     -p x  -k audit_tools

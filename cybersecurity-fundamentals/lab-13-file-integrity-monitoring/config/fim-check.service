@@ -1,0 +1,23 @@
+# fim-check.service: one file integrity scan of the critical folders.
+# Started by fim-check.timer. Install (paths assume the repo is in /opt/fim):
+#   sudo cp config/fim-check.service config/fim-check.timer /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo /opt/fim/scripts/critical_dirs_monitor.sh baseline     # once, first
+#   sudo systemctl enable --now fim-check.timer
+# Results:  journalctl -u fim-check.service    (exit 1 = changes found)
+[Unit]
+Description=File integrity check of critical folders
+Documentation=file:///opt/fim/README.md
+After=local-fs.target
+
+[Service]
+Type=oneshot
+Environment=FIM_STATE_DIR=/var/lib/fim
+ExecStart=/opt/fim/scripts/critical_dirs_monitor.sh check
+# Exit 1 means "changes found". systemd counts that as a failed run, so it
+# shows in "systemctl --failed" and can trigger OnFailure= alerting.
+Nice=10
+IOSchedulingClass=idle
+ProtectHome=read-only
+PrivateTmp=yes
+NoNewPrivileges=yes
