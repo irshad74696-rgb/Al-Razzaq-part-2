@@ -1,0 +1,32 @@
+time	exit	file	command
+01:02:23	0	system_info.txt	bash -c date; date -u; echo; uname -a; hostname -f 2>/dev/null || hostname; uptime; echo; cat /etc/os-release
+01:02:23	1	timedatectl.txt	timedatectl
+01:02:23	0	processes_tree.txt	ps auxf
+01:02:23	0	processes_detail.txt	ps -eo pid,ppid,user,lstart,etime,%cpu,%mem,stat,cmd --sort=pid
+01:02:23	0	network_ss_all.txt	ss -tanp
+01:02:23	0	listening_ports.txt	ss -tulpn
+01:02:23	0	network_connections.txt	netstat -antp
+01:02:23	0	ip_addr.txt	ip addr
+01:02:23	0	ip_route.txt	ip route
+01:02:23	0	ip_neigh.txt	ip neigh
+01:02:23	0	iptables_rules.txt	iptables-save
+01:02:23	0	logged_in_users.txt	bash -c who; echo; w
+01:02:23	0	recent_logins.txt	last -20 -F
+01:02:23	0	failed_logins.txt	lastb -20 -F
+01:02:23	0	lastlog.txt	lastlog
+01:02:23	0	passwd.txt	cat /etc/passwd
+01:02:23	0	group.txt	cat /etc/group
+01:02:23	0	account_status.txt	passwd -S -a
+01:02:23	0	sudoers.txt	bash -c cat /etc/sudoers; for f in /etc/sudoers.d/*; do echo "== $f"; cat "$f"; done
+01:02:23	0	logs/journal_auth.txt	journalctl -q --no-pager -o short-iso --since 1 days ago SYSLOG_FACILITY=4 SYSLOG_FACILITY=10
+01:02:23	0	logs/journal_errors.txt	journalctl -q --no-pager -o short-iso --since 1 days ago -p err
+01:02:23	0	logs/dmesg.txt	dmesg -T
+01:02:23	0	shell_history_suspicious.txt	bash -c for h in /root/.bash_history /home/*/.bash_history; do [ -r "$h" ] && grep -HnE "\b(wget|curl|nc|ncat|nmap|base64|chmod \+x|/dev/tcp)\b" "$h"; done; true
+01:02:23	0	cron.txt	bash -c cat /etc/crontab; ls -la /etc/cron.*; for f in /var/spool/cron/crontabs/*; do [ -f "$f" ] && { echo "== $f"; cat "$f"; }; done; true
+01:02:23	1	systemd_units.txt	systemctl list-units --type=service --all --no-pager
+01:02:23	0	systemd_local_units.txt	find /etc/systemd/system -xdev -type f -printf %TY-%Tm-%Td %TH:%TM %u %m %p\n
+01:02:23	0	hidden_temp_files.txt	find /tmp /var/tmp /dev/shm -xdev -name .* -type f -printf %TY-%Tm-%Td %TH:%TM:%TS %u %s %p\n
+01:02:23	0	recent_home_changes.txt	find /home /root -xdev -type f -mtime -1 -ls
+01:02:23	0	recent_etc_changes.txt	find /etc -xdev -type f -mtime -1 -ls
+01:02:24	0	recent_scripts.txt	find / -xdev -name *.sh -type f -mtime -1 -not -path /proc/*
+01:02:24	0	suid_files.txt	find / -xdev -perm -4000 -type f -ls

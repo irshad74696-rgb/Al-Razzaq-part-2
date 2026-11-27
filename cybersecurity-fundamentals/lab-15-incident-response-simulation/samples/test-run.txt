@@ -1,0 +1,41 @@
+$ sudo ./tests/test_lab.sh
+ok   - simulate dry run creates no account
+ok   - simulated process is running
+ok   - hidden log exists
+ok   - account exists with a usable password
+ok   - a second simulate run is refused for a real (unmarked) account
+ok   - triage exits 1 on HIGH findings
+ok   - triage flags the hidden-output process
+ok   - triage flags the watchlist IP
+ok   - triage flags the account
+ok   - triage flags the hidden file
+ok   - contain dry run leaves the firewall alone
+ok   - contain dry run leaves the process running
+ok   - contain refuses to lock root
+ok   - contain refuses to block loopback
+ok   - contain --apply succeeds
+ok   - process is gone
+ok   - no beacon left after containment (grandchildren too)
+ok   - OUTPUT DROP rule present
+ok   - INPUT DROP rule present
+ok   - account locked (L)
+ok   - account expired
+ok   - process snapshot has the program hash
+ok   - second contain run adds no duplicate rules
+ok   - archive created
+ok   - archive hash recorded once
+ok   - archive paths are relative
+ok   - manifest inside the archive verifies
+ok   - no password hashes in evidence
+ok   - --verify passes on the untouched archive
+ok   - --verify catches a tampered archive
+ok   - report written
+ok   - report names the PID
+ok   - report has the archive hash
+ok   - report has no [PLACEHOLDERS]
+ok   - cleanup dry run keeps the account
+ok   - cleanup removed the account
+ok   - cleanup removed only the lab rules
+ok   - cleanup kept the evidence
+
+passed: 38  failed: 0

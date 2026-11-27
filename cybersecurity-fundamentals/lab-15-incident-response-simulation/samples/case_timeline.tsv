@@ -1,0 +1,18 @@
+time	phase	analyst	event
+2026-11-27 01:01:18 +0000	simulate	root	Started simulated suspicious process PID 8999 (bash loop, output to /tmp/.hidden_log, beacons to 203.0.113.66:4444)
+2026-11-27 01:01:18 +0000	simulate	root	Created simulated unauthorised account hacker (UID 30033)
+2026-11-27 01:01:18 +0000	simulate	root	Simulated suspicious destination 203.0.113.66:4444
+2026-11-27 01:01:58 +0000	detect	root	Triage started (window 1d, watchlist 203.0.113.66)
+2026-11-27 01:02:00 +0000	detect	root	Triage finished: 3 high, 1 medium, 1 low findings
+2026-11-27 01:02:15 +0000	contain	root	Containment started (pid=8999 ip=203.0.113.66 user=hacker)
+2026-11-27 01:02:15 +0000	contain	root	Saved volatile snapshot of PID 8999 to /var/lib/ir-lab/process_8999_20261127_010215 (program SHA-256 bc5945feb8bd26203ebfafea5ce1878bb2e32cb8fb50ab7ae395cfb1e1aaaef1)
+2026-11-27 01:02:15 +0000	contain	root	Blocked 203.0.113.66 with iptables DROP rules at the top of INPUT and OUTPUT (tag ir-lab)
+2026-11-27 01:02:18 +0000	contain	root	Verified block: test connection to 203.0.113.66:4444 was dropped by the OUTPUT rule
+2026-11-27 01:02:18 +0000	contain	root	Killed PID 8999 and the processes below it: 9040
+2026-11-27 01:02:18 +0000	contain	root	Locked and expired account hacker, shell set to nologin
+2026-11-27 01:02:18 +0000	contain	root	Containment verified (result saved to containment_verification.txt)
+2026-11-27 01:02:23 +0000	evidence	root	Collection ir_collection_vm_20261127_010223 started
+2026-11-27 01:02:24 +0000	evidence	root	Collected 34 files into ir_collection_vm_20261127_010223.tar.gz, SHA-256 993feef0c5aba60f0a9d2f18e4e410099e6519e24121d65cd08a66679eeb86da
+2026-11-27 01:02:24 +0000	evidence	root	Verified ir_collection_vm_20261127_010223.tar.gz: hash matches
+2026-11-27 01:02:24 +0000	report	root	Incident report written: incident_report_20261127_010224.md
+2026-11-27 01:02:34 +0000	cleanup	root	Lab cleanup done: account, firewall rules and simulation files removed; evidence kept

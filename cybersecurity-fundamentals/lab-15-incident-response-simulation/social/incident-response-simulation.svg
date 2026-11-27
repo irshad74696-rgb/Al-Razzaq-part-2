@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="t d">
+  <title id="t">Incident Response on Linux: Detect, Contain, Collect, Document</title>
+  <desc id="d">Four phases of a simulated Linux incident: detecting a disguised beacon process and an unauthorised account, containing them with a snapshot-first kill, a surgical firewall block and an expired account, collecting hashed evidence with a chain of custody, and generating the incident report. Below, real output lines from the run.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#121a30"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1c2a47" stroke-width="1"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#475569"/>
+    </marker>
+    <style>
+      .h   { font: 700 44px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #f1f5f9; }
+      .sub { font: 400 21px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+      .num { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; fill: #64748b; }
+      .q   { font: 800 26px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; }
+      .p   { font: 400 16px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #cbd5e1; }
+      .mono{ font: 400 15px 'DejaVu Sans Mono', Consolas, monospace; fill: #cbd5e1; }
+      .tag { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; }
+      .foot{ font: 600 18px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect width="1200" height="627" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- siren / alert mark -->
+  <g transform="translate(60 40)">
+    <path d="M30 4 L58 60 H2 Z" fill="#ef4444" opacity="0.18" stroke="#f87171" stroke-width="2.5" stroke-linejoin="round"/>
+    <rect x="27.5" y="22" width="5" height="22" rx="2" fill="#f87171"/>
+    <circle cx="30" cy="51" r="3.2" fill="#f87171"/>
+  </g>
+  <text x="136" y="80" class="h">Incident Response on Linux</text>
+  <text x="136" y="114" class="sub">A staged compromise, worked from first alert to signed-off report</text>
+
+  <!-- card 1 -->
+  <g transform="translate(60 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="22" y="34" class="num">01</text>
+    <text x="22" y="68" class="q" fill="#f59e0b">DETECT</text>
+    <text x="22" y="102" class="p">Process writing to a</text>
+    <text x="22" y="124" class="p">hidden file in /tmp,</text>
+    <text x="22" y="146" class="p">beaconing to port 4444.</text>
+    <text x="22" y="178" class="p">Unknown account with</text>
+    <text x="22" y="200" class="p">a usable password.</text>
+  </g>
+  <line x1="314" y1="264" x2="336" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 2 -->
+  <g transform="translate(340 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+    <text x="22" y="34" class="num">02</text>
+    <text x="22" y="68" class="q" fill="#f87171">CONTAIN</text>
+    <text x="22" y="102" class="p">Snapshot the process</text>
+    <text x="22" y="124" class="p">before the kill.</text>
+    <text x="22" y="156" class="p">iptables -I, not -A,</text>
+    <text x="22" y="178" class="p">proven with a test packet.</text>
+    <text x="22" y="210" class="p">Lock and expire the user.</text>
+  </g>
+  <line x1="594" y1="264" x2="616" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 3 -->
+  <g transform="translate(620 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="22" y="34" class="num">03</text>
+    <text x="22" y="68" class="q" fill="#22c55e">COLLECT</text>
+    <text x="22" y="102" class="p">Order of volatility:</text>
+    <text x="22" y="124" class="p">memory state first,</text>
+    <text x="22" y="146" class="p">disk last.</text>
+    <text x="22" y="178" class="p">SHA-256 per file and per</text>
+    <text x="22" y="200" class="p">archive, chain of custody.</text>
+  </g>
+  <line x1="874" y1="264" x2="896" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 4 -->
+  <g transform="translate(900 146)">
+    <rect width="240" height="236" rx="14" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="22" y="34" class="num">04</text>
+    <text x="22" y="68" class="q" fill="#38bdf8">DOCUMENT</text>
+    <text x="22" y="102" class="p">Every action logged to a</text>
+    <text x="22" y="124" class="p">timeline as it happens.</text>
+    <text x="22" y="156" class="p">Report generated from it:</text>
+    <text x="22" y="178" class="p">real PIDs, real hashes,</text>
+    <text x="22" y="200" class="p">no hand-typed values.</text>
+  </g>
+
+  <!-- terminal strip with real output -->
+  <g transform="translate(60 404)">
+    <rect width="1080" height="152" rx="12" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+    <circle cx="22" cy="20" r="5" fill="#ef4444"/><circle cx="40" cy="20" r="5" fill="#f59e0b"/><circle cx="58" cy="20" r="5" fill="#22c55e"/>
+    <text x="24" y="56" class="tag" fill="#ef4444">[HIGH]</text>
+    <text x="104" y="56" class="mono">PID 8999 writes its output to hidden file /tmp/.hidden_log</text>
+    <text x="24" y="82" class="tag" fill="#ef4444">[HIGH]</text>
+    <text x="104" y="82" class="mono">unknown login account with a usable password: hacker</text>
+    <text x="24" y="108" class="tag" fill="#22c55e">[ OK ]</text>
+    <text x="104" y="108" class="mono">test connection to 203.0.113.66:4444 dropped (packets 0 -&gt; 3)</text>
+    <text x="24" y="134" class="tag" fill="#22c55e">[ OK ]</text>
+    <text x="104" y="134" class="mono">evidence hash matches: da9e5060e536...c5615341</text>
+  </g>
+
+  <text x="60" y="596" class="foot">Irshad Ali  ·  Linux incident response lab</text>
+  <text x="1140" y="596" class="foot" text-anchor="end">#IncidentResponse  #DFIR  #BlueTeam</text>
+</svg>
