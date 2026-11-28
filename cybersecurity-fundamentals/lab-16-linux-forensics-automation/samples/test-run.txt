@@ -1,0 +1,59 @@
+ok   - port 4444 is free before the test
+ok   - dry run creates no folder
+ok   - dry run starts no listener
+ok   - listener is up on 127.0.0.1:4444
+ok   - listener is not on all interfaces
+ok   - simulated folder is private (700)
+ok   - backdoor file carries the marker
+ok   - simulated auth log exists
+ok   - second run does not start a second listener
+ok   - collector exits 0
+ok   - collection folder is private (700)
+ok   - ps, ss, passwd and summary were collected
+ok   - the listener is in the collected sockets
+ok   - extra log was copied
+ok   - no password hashes in the evidence
+ok   - every command is in the collection log
+ok   - per-file manifest verifies
+ok   - manifest does not list itself
+ok   - archive hash verifies
+ok   - archive is read-only (400)
+ok   - archive holds relative paths
+ok   - analyzer exits 1 on HIGH/CRITICAL
+ok   - analyzer: brute force then success is CRITICAL
+ok   - analyzer: injected address is not blamed
+ok   - analyzer: netcat listener found
+ok   - analyzer: backdoor port found
+ok   - analyzer: backdoor file found
+ok   - analyzer: non-admin sudo found
+ok   - detector exits 1 on HIGH/CRITICAL
+ok   - detector: brute force from 203.0.113.50 (19 failures) followed by a successful login
+ok   - detector: nc running as root
+ok   - detector: listener on backdoor port 4444
+ok   - detector: suspicious file name: /tmp/tmp.mTFmQsRjf4/sim/backdoor.sh
+ok   - detector: sudo refused for webadmin
+ok   - detector: sudo used by webadmin
+ok   - detector: log injection attempt
+ok   - detector wrote a summary with recommendations
+ok   - report has EXECUTIVE SUMMARY
+ok   - report has DETAILED FINDINGS
+ok   - report has TIMELINE OF EVENTS
+ok   - report has RECOMMENDATIONS
+ok   - report has APPENDIX
+ok   - report names the analyst
+ok   - report merges findings seen by both tools
+ok   - report verified the manifest and archive
+ok   - timeline is in time order
+ok   - HTML report written, no script tags
+ok   - manifest catches a changed file
+ok   - report flags the failed verification
+ok   - cleanup dry run keeps the listener
+ok   - cleanup stops the listener
+ok   - cleanup removes the simulated folder
+ok   - evidence is kept after cleanup
+ok   - cleanup leaves an unmarked folder alone
+ok   - staging refuses to reuse an unmarked folder
+ok   - after cleanup: no backdoor port or netcat findings
+ok   - the firewall was never touched
+
+57 passed, 0 failed

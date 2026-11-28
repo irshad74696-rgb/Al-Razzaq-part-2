@@ -1,0 +1,11 @@
+.
+./files
+./logs
+./logs/auth
+./logs/auth/extra
+./logs/system
+./network
+./persistence
+./processes
+./system_info
+./users

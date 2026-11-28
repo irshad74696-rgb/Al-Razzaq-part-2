@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="t d">
+  <title id="t">Linux Forensics, Automated: Collect, Analyse, Detect, Report</title>
+  <desc id="d">Four stages of an automated Linux forensics workflow: hashed evidence collection, Python analysis of logs, processes and sockets, live detection, and a generated report. Below, real output lines from a test run against a staged brute force and netcat backdoor.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1c2a47" stroke-width="1"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#475569"/>
+    </marker>
+    <style>
+      .h   { font: 700 44px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #f1f5f9; }
+      .sub { font: 400 21px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+      .num { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; fill: #64748b; }
+      .q   { font: 800 26px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; }
+      .p   { font: 400 16px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #cbd5e1; }
+      .mono{ font: 400 15px 'DejaVu Sans Mono', Consolas, monospace; fill: #cbd5e1; }
+      .tag { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; }
+      .foot{ font: 600 18px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect width="1200" height="627" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- magnifier mark -->
+  <g transform="translate(60 38)" fill="none" stroke="#38bdf8" stroke-width="5" stroke-linecap="round">
+    <circle cx="26" cy="26" r="20" fill="#38bdf8" fill-opacity="0.15"/>
+    <line x1="41" y1="41" x2="58" y2="58"/>
+  </g>
+  <text x="136" y="80" class="h">Linux Forensics, Automated</text>
+  <text x="136" y="114" class="sub">From raw logs and sockets to a verified report, with one command per step</text>
+
+  <!-- card 1 -->
+  <g transform="translate(60 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="22" y="34" class="num">01</text>
+    <text x="22" y="68" class="q" fill="#22c55e">COLLECT</text>
+    <text x="22" y="102" class="p">Processes and sockets</text>
+    <text x="22" y="124" class="p">first, logs and files after.</text>
+    <text x="22" y="156" class="p">SHA-256 for every file,</text>
+    <text x="22" y="178" class="p">read-only archive.</text>
+    <text x="22" y="210" class="p">No password hashes.</text>
+  </g>
+  <line x1="314" y1="264" x2="336" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 2 -->
+  <g transform="translate(340 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="22" y="34" class="num">02</text>
+    <text x="22" y="68" class="q" fill="#f59e0b">ANALYSE</text>
+    <text x="22" y="102" class="p">Python parses auth logs,</text>
+    <text x="22" y="124" class="p">ps and ss output.</text>
+    <text x="22" y="156" class="p">Brute force, then a</text>
+    <text x="22" y="178" class="p">successful login from the</text>
+    <text x="22" y="200" class="p">same address: CRITICAL.</text>
+  </g>
+  <line x1="594" y1="264" x2="616" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 3 -->
+  <g transform="translate(620 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+    <text x="22" y="34" class="num">03</text>
+    <text x="22" y="68" class="q" fill="#f87171">DETECT</text>
+    <text x="22" y="102" class="p">Netcat listeners, ports</text>
+    <text x="22" y="124" class="p">like 4444 and 31337,</text>
+    <text x="22" y="146" class="p">programs run from /tmp,</text>
+    <text x="22" y="168" class="p">sudo by non-admins,</text>
+    <text x="22" y="190" class="p">forged log lines.</text>
+  </g>
+  <line x1="874" y1="264" x2="896" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 4 -->
+  <g transform="translate(900 146)">
+    <rect width="240" height="236" rx="14" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="22" y="34" class="num">04</text>
+    <text x="22" y="68" class="q" fill="#38bdf8">REPORT</text>
+    <text x="22" y="102" class="p">Summary, findings,</text>
+    <text x="22" y="124" class="p">timeline, fixes.</text>
+    <text x="22" y="156" class="p">Hashes re-checked inside</text>
+    <text x="22" y="178" class="p">the report. Text and</text>
+    <text x="22" y="200" class="p">HTML, nothing hand-typed.</text>
+  </g>
+
+  <!-- terminal strip with real output -->
+  <g transform="translate(60 404)">
+    <rect width="1080" height="152" rx="12" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+    <circle cx="22" cy="20" r="5" fill="#ef4444"/><circle cx="40" cy="20" r="5" fill="#f59e0b"/><circle cx="58" cy="20" r="5" fill="#22c55e"/>
+    <text x="24" y="56" class="tag" fill="#dc2626">[CRITICAL]</text>
+    <text x="140" y="56" class="mono">brute force from 203.0.113.50 (19 failures) followed by a successful login</text>
+    <text x="24" y="82" class="tag" fill="#f97316">[HIGH]</text>
+    <text x="140" y="82" class="mono">nc running as root in listen mode; listener on backdoor port 4444</text>
+    <text x="24" y="108" class="tag" fill="#eab308">[MEDIUM]</text>
+    <text x="140" y="108" class="mono">log injection attempt: username contains a fake source address</text>
+    <text x="24" y="134" class="tag" fill="#22c55e">[ OK ]</text>
+    <text x="140" y="134" class="mono">MANIFEST.sha256: all 41 file hashes verified OK</text>
+  </g>
+
+  <text x="60" y="596" class="foot">Irshad Ali  ·  Linux forensics automation lab</text>
+  <text x="1140" y="596" class="foot" text-anchor="end">#DFIR  #Linux  #BlueTeam</text>
+</svg>
