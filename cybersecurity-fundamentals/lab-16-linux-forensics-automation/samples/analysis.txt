@@ -1,0 +1,51 @@
+======================================================================
+LINUX FORENSIC ANALYSIS REPORT
+======================================================================
+Generated:  2026-11-28T03:04:26+00:00
+Analyzed on: vm
+Collection: /tmp/fxs/automated_collection_20261128_030425
+
+SUMMARY
+  CRITICAL: 1  HIGH: 6  MEDIUM: 3  LOW: 0  INFO: 3
+  Auth lines read: 25, failed logins: 19, successful logins: 2, sudo events: 3
+  Processes: 12, listening ports: 2024, 4444, 37899, 38539
+
+FINDINGS (most severe first)
+  [CRITICAL] authentication brute force from 203.0.113.50 (19 failures) followed by a successful login
+                             evidence: logged in as webadmin at 2026-11-28T02:57:14+00:00 via password; failures from 02:54:31 to 02:57:04
+  [HIGH    ] process        nc running as root (PID 5569) in listen or exec mode
+                             evidence: nc -l 127.0.0.1 4444
+  [HIGH    ] process        PID 91 runs a program that was deleted from disk
+                             evidence: /memfd:sbx-telemetry-collector (deleted)
+  [HIGH    ] network        listener on backdoor port 4444 (loopback only)
+                             evidence: tcp   LISTEN 0      1          127.0.0.1:4444        0.0.0.0:*    users:(("nc",pid=5569,fd=3))
+  [HIGH    ] file           suspicious file name: /tmp/forensics_lab_sim/backdoor.sh
+                             evidence: mode 700, owner root, modified 2026-11-28 03:04
+  [HIGH    ] privilege      sudo refused for webadmin
+                             evidence: /usr/bin/cat /etc/shadow
+  [HIGH    ] privilege      sudo used by webadmin, who is not in an admin group
+                             evidence: /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+  [MEDIUM  ] authentication log injection attempt: username contains a fake source address
+                             evidence: real source 203.0.113.50; username was 'test from 10.9.9.9 port 22'
+  [MEDIUM  ] privilege      sudo command by webadmin reads or edits credentials/sudo rules
+                             evidence: /usr/bin/cat /etc/shadow
+  [MEDIUM  ] privilege      sudo command by webadmin makes a temp-folder file executable
+                             evidence: /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+  [INFO    ] network        7 connection(s) to public address <sandbox-service-ip>:443 by <sandbox agent>
+                             evidence: check that this program is expected to talk to this address
+  [INFO    ] network        2 connection(s) to public address <sandbox-service-ip>:443 by <sandbox manager>
+                             evidence: check that this program is expected to talk to this address
+  [INFO    ] network        1 connection(s) to public address <sandbox-service-ip>:443 by <sandbox agent>
+                             evidence: check that this program is expected to talk to this address
+
+FAILED LOGINS BY SOURCE
+     19  203.0.113.50
+
+TIMELINE
+  2026-11-28 02:54:31+0000  [analysis] brute force from 203.0.113.50 begins
+  2026-11-28 02:57:04+0000  [analysis] brute force from 203.0.113.50: last failure (19 in total)
+  2026-11-28 02:57:14+0000  [test_auth.log] login accepted: webadmin from 203.0.113.50 (password)
+  2026-11-28 02:57:44+0000  [test_auth.log] sudo by webadmin: /usr/bin/cat /etc/shadow
+  2026-11-28 02:58:04+0000  [test_auth.log] sudo by webadmin: /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+  2026-11-28 02:58:24+0000  [test_auth.log] sudo by root: /usr/bin/apt update
+  2026-11-28 02:59:24+0000  [test_auth.log] login accepted: root from 127.0.0.1 (publickey)

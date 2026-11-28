@@ -1,0 +1,30 @@
+time	exit	output	command
+2026-11-28T03:04:25+0000	0	processes/ps_aux.txt	ps aux
+2026-11-28T03:04:25+0000	0	processes/ps_detailed.txt	ps -eo pid,ppid,user,group,lstart,etime,stat,comm,args
+2026-11-28T03:04:25+0000	0	processes/process_tree.txt	pstree -apl
+2026-11-28T03:04:25+0000	0	processes/processes_by_cpu.txt	ps aux --sort=-%cpu
+2026-11-28T03:04:25+0000	0	processes/processes_by_memory.txt	ps aux --sort=-%mem
+2026-11-28T03:04:26+0000	0	processes/open_files.txt	lsof -nP
+2026-11-28T03:04:26+0000	0	network/connections.txt	ss -tunap
+2026-11-28T03:04:26+0000	0	network/listening_tcp.txt	ss -tlnp
+2026-11-28T03:04:26+0000	0	network/listening_udp.txt	ss -ulnp
+2026-11-28T03:04:26+0000	0	network/netstat_an.txt	netstat -tunap
+2026-11-28T03:04:26+0000	0	network/interfaces.txt	ip addr show
+2026-11-28T03:04:26+0000	0	network/routes.txt	ip route show
+2026-11-28T03:04:26+0000	0	network/neighbours.txt	ip neigh show
+2026-11-28T03:04:26+0000	0	network/iptables.txt	iptables -L -n -v --line-numbers
+2026-11-28T03:04:26+0000	0	network/nft_ruleset.txt	nft list ruleset
+2026-11-28T03:04:26+0000	missing	network/ufw_status.txt	ufw status verbose
+2026-11-28T03:04:26+0000	0	system_info/mounts.txt	findmnt -l
+2026-11-28T03:04:26+0000	missing	system_info/kernel_modules.txt	lsmod
+2026-11-28T03:04:26+0000	0	users/passwd.txt	cp /etc/passwd
+2026-11-28T03:04:26+0000	0	users/group.txt	cp /etc/group
+2026-11-28T03:04:26+0000	0	users/account_status.txt	passwd -S -a
+2026-11-28T03:04:26+0000	absent	logs/system/syslog_backup.log	cp /var/log/syslog
+2026-11-28T03:04:26+0000	absent	logs/system/kernel_backup.log	cp /var/log/kern.log
+2026-11-28T03:04:26+0000	0	logs/system/journal_since.txt	journalctl -q --no-pager -o short-iso --since 24 hours ago
+2026-11-28T03:04:26+0000	absent	logs/auth/auth_backup.log	cp /var/log/auth.log
+2026-11-28T03:04:26+0000	absent	logs/auth/auth_backup.1.log	cp /var/log/auth.log.1
+2026-11-28T03:04:26+0000	0	logs/auth/extra/test_auth.log	cp /tmp/forensics_lab_sim/test_auth.log
+2026-11-28T03:04:26+0000	1	persistence/timers.txt	systemctl list-timers --all --no-pager
+2026-11-28T03:04:26+0000	0	persistence/enabled_units.txt	systemctl list-unit-files --state=enabled --no-pager

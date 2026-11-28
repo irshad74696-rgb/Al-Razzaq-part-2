@@ -1,0 +1,10 @@
+=== FORENSIC COLLECTION SUMMARY ===
+Collection:   automated_collection_20261128_030425
+Host:         vm
+Collected by: root
+Started:      2026-11-28T03:04:25+0000
+Finished:     2026-11-28T03:04:26+0000
+Files:        40
+Total size:   740K
+Commands that failed: 1 (see collection_log.tsv)
+Extra logs:   /tmp/forensics_lab_sim/test_auth.log

@@ -1,0 +1,131 @@
+========================================================================
+LINUX FORENSIC INVESTIGATION REPORT
+========================================================================
+Report ID:       FR-vm-20261128_030426
+Report date:     2026-11-28 03:04:26 UTC
+System:          vm (Ubuntu 24.04.5 LTS, kernel 6.18.44-fc-v880)
+Analyst:         Irshad Ali
+Collection:      /tmp/fxs/automated_collection_20261128_030425
+Detection run:   /tmp/fxs/unauthorized_analysis_20261128_030426
+Analysis run:    /tmp/fxs/python_analysis_20261128_030426
+
+1. EXECUTIVE SUMMARY
+------------------------------------------------------------------------
+Findings: 13 in total. CRITICAL 1, HIGH 6, MEDIUM 3, LOW 0, INFO 3.
+Sources: live detection on the running host, and analysis of the collected
+data. A finding seen by both is listed once with both sources.
+
+Most serious:
+  - [CRITICAL] brute force from 203.0.113.50 (19 failures) followed by a successful login
+  - [HIGH] PID 91 runs a program that was deleted from disk
+  - [HIGH] listener on backdoor port 4444 (loopback only)
+  - [HIGH] nc running as root (PID 5569) in listen or exec mode
+  - [HIGH] sudo refused for webadmin
+  - [HIGH] sudo used by webadmin, who is not in an admin group
+  - [HIGH] suspicious file name: /tmp/forensics_lab_sim/backdoor.sh
+
+Assessment: evidence of a successful compromise. Treat the host as
+untrusted until the accounts and processes above are explained.
+
+2. DETAILED FINDINGS
+------------------------------------------------------------------------
+  1. [CRITICAL] brute force from 203.0.113.50 (19 failures) followed by a successful login
+     Type:     authentication
+     Evidence: 2026-11-28T02:57:14+00:00 vm sshd[41160]: Accepted password for webadmin from 203.0.113.50 port 51210 ssh2 | logged in as webadmin at 2026-11-28T02:57:14+00:00 via password; failures from 02:54:31 to 02:57:04
+     Source:   live detection + log and data analysis
+  2. [HIGH] nc running as root (PID 5569) in listen or exec mode
+     Type:     process
+     Evidence: nc -l 127.0.0.1 4444
+     Source:   live detection + log and data analysis
+  3. [HIGH] PID 91 runs a program that was deleted from disk
+     Type:     process
+     Evidence: /memfd:sbx-telemetry-collector (deleted)
+     Source:   live detection + log and data analysis
+  4. [HIGH] listener on backdoor port 4444 (loopback only)
+     Type:     network
+     Evidence: LISTEN 0      1      127.0.0.1:4444  0.0.0.0:* users:(("nc",pid=5569,fd=3)) | tcp   LISTEN 0      1          127.0.0.1:4444        0.0.0.0:*    users:(("nc",pid=5569,fd=3))
+     Source:   live detection + log and data analysis
+  5. [HIGH] suspicious file name: /tmp/forensics_lab_sim/backdoor.sh
+     Type:     file
+     Evidence: -rwx------ root 2026-11-28 03:04:24.797366800 +0000 | mode 700, owner root, modified 2026-11-28 03:04
+     Source:   live detection + log and data analysis
+  6. [HIGH] sudo refused for webadmin
+     Type:     privilege
+     Evidence: 2026-11-28T02:57:44+00:00 vm sudo:  webadmin : user NOT in sudoers ; TTY=pts/3 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow | /usr/bin/cat /etc/shadow
+     Source:   live detection + log and data analysis
+  7. [HIGH] sudo used by webadmin, who is not in an admin group
+     Type:     privilege
+     Evidence: 2026-11-28T02:58:04+00:00 vm sudo: webadmin : TTY=pts/3 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh | /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+     Source:   live detection + log and data analysis
+  8. [MEDIUM] log injection attempt: username contains a fake source address
+     Type:     authentication
+     Evidence: 2026-11-28T02:57:04+00:00 vm sshd[41150]: Failed password for invalid user test from 10.9.9.9 port 22 from 203.0.113.50 port 51200 ssh2 | real source 203.0.113.50; username was 'test from 10.9.9.9 port 22'
+     Source:   live detection + log and data analysis
+  9. [MEDIUM] sudo command by webadmin reads or edits credentials/sudo rules
+     Type:     privilege
+     Evidence: /usr/bin/cat /etc/shadow
+     Source:   log and data analysis
+ 10. [MEDIUM] sudo command by webadmin makes a temp-folder file executable
+     Type:     privilege
+     Evidence: /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+     Source:   log and data analysis
+ 11. [INFO] 7 connection(s) to public address <sandbox-service-ip>:443 by <sandbox agent>
+     Type:     network
+     Evidence: check that this program is expected to talk to this address
+     Source:   log and data analysis
+ 12. [INFO] 2 connection(s) to public address <sandbox-service-ip>:443 by <sandbox manager>
+     Type:     network
+     Evidence: check that this program is expected to talk to this address
+     Source:   log and data analysis
+ 13. [INFO] 1 connection(s) to public address <sandbox-service-ip>:443 by <sandbox agent>
+     Type:     network
+     Evidence: check that this program is expected to talk to this address
+     Source:   log and data analysis
+
+3. TIMELINE OF EVENTS
+------------------------------------------------------------------------
+  2026-11-28 02:54:31  [analysis]       brute force from 203.0.113.50 begins
+  2026-11-28 02:57:04  [analysis]       brute force from 203.0.113.50: last failure (19 in total)
+  2026-11-28 02:57:14  [test_auth.log]  login accepted: webadmin from 203.0.113.50 (password)
+  2026-11-28 02:57:44  [test_auth.log]  sudo by webadmin: /usr/bin/cat /etc/shadow
+  2026-11-28 02:58:04  [test_auth.log]  sudo by webadmin: /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+  2026-11-28 02:58:24  [test_auth.log]  sudo by root: /usr/bin/apt update
+  2026-11-28 02:59:24  [test_auth.log]  login accepted: root from 127.0.0.1 (publickey)
+  2026-11-28 03:04:25  [collection]     evidence collection started (automated_collection_20261128_030425)
+  2026-11-28 03:04:26  [collection]     evidence collection finished
+  2026-11-28 03:04:26  [detection]      live detection run (8 findings)
+  (times in UTC)
+
+4. RECOMMENDATIONS
+------------------------------------------------------------------------
+  - Block the brute-forcing addresses (ufw deny from <ip>), turn off SSH passwords, add fail2ban, and reset the password of any account that logged in after a brute force.
+  - Hash and copy flagged files into the evidence folder, then remove them; check cron and systemd for anything that recreates them.
+  - Identify the program behind each backdoor-port socket (ss -tlnp), stop it, and check that no firewall rule allows the port.
+  - Review what the non-admin account ran with sudo and why it was allowed (sudo -l -U <user>, /etc/sudoers.d).
+  - Snapshot each flagged process (/proc/PID/cmdline, fd, exe hash) BEFORE killing it, then stop it and find what started it.
+  - Keep the evidence archive read-only and record its SHA-256 with this report.
+  - Re-run the collector after remediation and compare against this report.
+
+5. APPENDIX: RAW DATA AND INTEGRITY
+------------------------------------------------------------------------
+Collection folder: /tmp/fxs/automated_collection_20261128_030425
+  files: 42, size: 748K
+  MANIFEST.sha256: all 41 file hashes verified OK
+  archive: /tmp/fxs/forensic_collection_20261128_030425.tar.gz
+  archive SHA-256: e62eb35f8f4d94a90ed348ea447f3bcf613bef38ad4227efffb97c052735f80e
+  archive hash verified OK
+  commands that were missing, absent or failed:
+    missing: ufw status verbose
+    missing: lsmod
+    absent: cp /var/log/syslog
+    absent: cp /var/log/kern.log
+    absent: cp /var/log/auth.log
+    absent: cp /var/log/auth.log.1
+    1: systemctl list-timers --all --no-pager
+  key files: logs/auth/auth_events.txt, processes/ps_aux.txt, network/connections.txt,
+             users/login_accounts.txt, files/temp_files.txt, summary.txt
+Live detection: /tmp/fxs/unauthorized_analysis_20261128_030426/findings.txt
+Analysis: /tmp/fxs/python_analysis_20261128_030426/analysis.txt, /tmp/fxs/python_analysis_20261128_030426/analysis.json
+
+========================================================================
+End of report. Generated by generate_report.sh; nothing in it was typed by hand.

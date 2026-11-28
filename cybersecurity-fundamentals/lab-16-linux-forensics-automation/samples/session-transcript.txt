@@ -1,0 +1,134 @@
+$ sudo ./create_test_activities.sh --apply
+
+== Staging simulated activity (applying) ==
+  + create /tmp/forensics_lab_sim (mode 700) with a marker file
+  + write /tmp/forensics_lab_sim/test_auth.log (simulated sshd and sudo lines, attacker 203.0.113.50)
+  + create /tmp/forensics_lab_sim/backdoor.sh (harmless: only prints a message)
+  + start 'nc -l 127.0.0.1 4444' (loopback only, stops by itself after 60 min)
+[INFO] listener up on 127.0.0.1:4444 (PID 5566)
+
+[INFO] Test activities created. Collect with:
+  sudo ./forensic_collector.sh --extra-log /tmp/forensics_lab_sim/test_auth.log
+  sudo ./detect_unauthorized.sh --auth-log /tmp/forensics_lab_sim/test_auth.log
+[INFO] Cleanup: sudo ./create_test_activities.sh --cleanup --apply
+
+$ sudo ./forensic_collector.sh --extra-log /tmp/forensics_lab_sim/test_auth.log
+[INFO] Starting forensic collection - 20261128_030425
+[INFO] Output: /tmp/fxs/automated_collection_20261128_030425
+
+== Processes ==
+[INFO] Process information collected
+
+== Network ==
+[INFO] Network information collected
+
+== System ==
+[INFO] System information collected
+
+== Users ==
+[INFO] User information collected
+
+== Logs ==
+[INFO] Included extra log: /tmp/forensics_lab_sim/test_auth.log
+[WARN] no authentication events on this host (no auth.log and an empty journal?)
+[INFO] Logs collected
+
+== Persistence and files ==
+[INFO] Persistence and file listings collected
+
+== Summary ==
+=== FORENSIC COLLECTION SUMMARY ===
+Collection:   automated_collection_20261128_030425
+Host:         vm
+Collected by: root
+Started:      2026-11-28T03:04:25+0000
+Finished:     2026-11-28T03:04:26+0000
+Files:        40
+Total size:   740K
+Commands that failed: 1 (see collection_log.tsv)
+Extra logs:   /tmp/forensics_lab_sim/test_auth.log
+[INFO] Per-file hashes: /tmp/fxs/automated_collection_20261128_030425/MANIFEST.sha256
+[INFO] Archive: /tmp/fxs/forensic_collection_20261128_030425.tar.gz
+[INFO] SHA-256: e62eb35f8f4d94a90ed348ea447f3bcf613bef38ad4227efffb97c052735f80e
+[INFO] Collection completed: /tmp/fxs/automated_collection_20261128_030425
+
+$ sudo python3 forensic_analyzer.py
+=== Linux Forensic Data Analyzer ===
+[INFO] Collection: /tmp/fxs/automated_collection_20261128_030425
+[INFO] Analyzing authentication logs...
+[INFO] Analyzing process information...
+[INFO] Analyzing network connections...
+[INFO] Analyzing temp-folder file listing...
+[INFO] Generating forensic analysis report...
+[INFO] Findings: CRITICAL 1, HIGH 6, MEDIUM 3, LOW 0, INFO 3
+  [CRITICAL] brute force from 203.0.113.50 (19 failures) followed by a successful login
+  [HIGH] sudo refused for webadmin
+  [HIGH] sudo used by webadmin, who is not in an admin group
+  [HIGH] nc running as root (PID 5569) in listen or exec mode
+  [HIGH] PID 91 runs a program that was deleted from disk
+  [HIGH] listener on backdoor port 4444 (loopback only)
+  [HIGH] suspicious file name: /tmp/forensics_lab_sim/backdoor.sh
+[INFO] Text report: /tmp/fxs/python_analysis_20261128_030426/analysis.txt
+[INFO] JSON report: /tmp/fxs/python_analysis_20261128_030426/analysis.json
+
+$ sudo ./detect_unauthorized.sh --auth-log /tmp/forensics_lab_sim/test_auth.log
+=== UNAUTHORIZED ACTIVITY DETECTION ===
+Host: vm   Time: 2026-11-28T03:04:26+0000   Analyst: root
+Thresholds: brute force at more than 10 failures from one address, or 20 in total
+Auth lines examined: 25 (sources: journal + /tmp/forensics_lab_sim/test_auth.log)
+
+== Brute force logins ==
+  failed password lines: 19
+  [CRITICAL] brute force from 203.0.113.50 (19 failures) followed by a successful login
+           evidence: 2026-11-28T02:57:14+00:00 vm sshd[41160]: Accepted password for webadmin from 203.0.113.50 port 51210 ssh2
+  [MEDIUM] log injection attempt: username contains a fake source address
+           evidence: 2026-11-28T02:57:04+00:00 vm sshd[41150]: Failed password for invalid user test from 10.9.9.9 port 22 from 203.0.113.50 port 51200 ssh2
+
+== Suspicious processes ==
+  [HIGH] nc running as root (PID 5569) in listen or exec mode
+           evidence: nc -l 127.0.0.1 4444
+  [HIGH] PID 91 runs a program that was deleted from disk
+           evidence: /memfd:sbx-telemetry-collector (deleted)
+
+== Suspicious listening ports and connections ==
+  [HIGH] listener on backdoor port 4444 (loopback only)
+           evidence: LISTEN 0      1      127.0.0.1:4444  0.0.0.0:* users:(("nc",pid=5569,fd=3))
+
+== Suspicious files in temp folders ==
+  [HIGH] suspicious file name: /tmp/forensics_lab_sim/backdoor.sh
+           evidence: -rwx------ root 2026-11-28 03:04:24.797366800 +0000
+
+== Sudo use by non-admin accounts ==
+  admin accounts: ubuntu root
+  [HIGH] sudo refused for webadmin
+           evidence: 2026-11-28T02:57:44+00:00 vm sudo:  webadmin : user NOT in sudoers ; TTY=pts/3 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow
+  [HIGH] sudo used by webadmin, who is not in an admin group
+           evidence: 2026-11-28T02:58:04+00:00 vm sudo: webadmin : TTY=pts/3 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh
+
+== Accounts with UID 0 ==
+  only root
+
+== Summary ==
+Total findings: 8
+  CRITICAL: 1  HIGH: 6  MEDIUM: 1  LOW: 0
+
+Recommendations:
+  - Block the brute-forcing addresses (ufw deny from <ip>), turn off SSH passwords, add fail2ban, and reset the password of any account that logged in after a brute force.
+  - Hash and copy flagged files into the evidence folder, then remove them; check cron and systemd for anything that recreates them.
+  - Identify the program behind each backdoor-port socket (ss -tlnp), stop it, and check that no firewall rule allows the port.
+  - Review what the non-admin account ran with sudo and why it was allowed (sudo -l -U <user>, /etc/sudoers.d).
+  - Snapshot each flagged process (/proc/PID/cmdline, fd, exe hash) BEFORE killing it, then stop it and find what started it.
+
+[INFO] Analysis completed: /tmp/fxs/unauthorized_analysis_20261128_030426
+
+$ sudo ./generate_report.sh --analyst "Irshad Ali"
+[INFO] Report generated: /tmp/fxs/reports/forensic_report_20261128_030426.txt
+
+$ sudo python3 html_report_generator.py --analyst "Irshad Ali"
+[INFO] HTML report: /tmp/fxs/reports/forensic_report_20261128_030427.html (13 findings)
+
+$ sudo ./create_test_activities.sh --cleanup --apply
+
+== Cleanup (applying) ==
+  + stop listener PID 5566 and its child
+  + remove /tmp/forensics_lab_sim

@@ -1,0 +1,74 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta http-equiv='Content-Security-Policy' content="default-src 'none'; style-src 'unsafe-inline'">
+<title>Forensic Report vm</title><style>
+:root { --bg:#f8fafc; --card:#fff; --ink:#0f172a; --muted:#475569; --line:#e2e8f0; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0b1220; --card:#111a2e; --ink:#e2e8f0; --muted:#94a3b8; --line:#1e293b; } }
+* { box-sizing: border-box; }
+body { margin:0; font:15px/1.5 system-ui, 'Segoe UI', Ubuntu, sans-serif; background:var(--bg); color:var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { margin: 0 0 4px; font-size: 26px; } h2 { margin: 32px 0 12px; font-size: 19px; }
+.meta { color: var(--muted); margin: 0 0 20px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; border-top: 4px solid var(--c); }
+.card b { display:block; font-size: 28px; } .card span { color: var(--muted); font-size: 13px; letter-spacing: .04em; }
+.bar { display:flex; height: 14px; border-radius: 7px; overflow: hidden; margin-top: 14px; background: var(--line); }
+.bar i { display:block; background: var(--c); }
+table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+td code { font: 12.5px ui-monospace, 'DejaVu Sans Mono', monospace; word-break: break-all; }
+.sev { display:inline-block; min-width: 76px; text-align:center; color:#fff; font-weight:700; font-size:12px; padding:2px 8px; border-radius: 999px; background: var(--c); }
+.hbar { height: 10px; background: #ea580c; border-radius: 5px; }
+.wrap { overflow-x: auto; }
+footer { color: var(--muted); margin-top: 32px; font-size: 13px; }
+</style></head><body><main>
+<h1>Linux Forensic Investigation Report</h1>
+<p class='meta'>Host <b>vm</b> · analyst Irshad Ali · generated 2026-11-28T03:04:27+00:00<br>Collection <code>/tmp/fxs/automated_collection_20261128_030425</code> · live detection <code>/tmp/fxs/unauthorized_analysis_20261128_030426</code></p>
+<h2>Executive summary</h2><div class='cards'>
+<div class='card' style='--c:#b91c1c'><b>1</b><span>CRITICAL</span></div>
+<div class='card' style='--c:#ea580c'><b>6</b><span>HIGH</span></div>
+<div class='card' style='--c:#ca8a04'><b>3</b><span>MEDIUM</span></div>
+<div class='card' style='--c:#2563eb'><b>0</b><span>LOW</span></div>
+<div class='card' style='--c:#64748b'><b>3</b><span>INFO</span></div>
+</div><div class='bar' role='img' aria-label='findings by severity'>
+<i style='--c:#b91c1c;width:7.7%' title='CRITICAL: 1'></i>
+<i style='--c:#ea580c;width:46.2%' title='HIGH: 6'></i>
+<i style='--c:#ca8a04;width:23.1%' title='MEDIUM: 3'></i>
+<i style='--c:#64748b;width:23.1%' title='INFO: 3'></i>
+</div>
+<p><b>Assessment:</b> evidence of a successful compromise. Treat the host as untrusted.</p>
+<h2>Findings</h2><div class='wrap'><table><tr><th>Severity</th><th>Type</th><th>Finding</th><th>Evidence</th><th>Source</th></tr>
+<tr><td><span class='sev' style='--c:#b91c1c'>CRITICAL</span></td><td>authentication</td><td>brute force from 203.0.113.50 (19 failures) followed by a successful login</td><td><code>2026-11-28T02:57:14+00:00 vm sshd[41160]: Accepted password for webadmin from 203.0.113.50 port 51210 ssh2 | logged in as webadmin at 2026-11-28T02:57:14+00:00 via password; failures from 02:54:31 to 02:57:04</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ea580c'>HIGH</span></td><td>process</td><td>nc running as root (PID 5569) in listen or exec mode</td><td><code>nc -l 127.0.0.1 4444</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ea580c'>HIGH</span></td><td>process</td><td>PID 91 runs a program that was deleted from disk</td><td><code>/memfd:sbx-telemetry-collector (deleted)</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ea580c'>HIGH</span></td><td>network</td><td>listener on backdoor port 4444 (loopback only)</td><td><code>LISTEN 0      1      127.0.0.1:4444  0.0.0.0:* users:((&quot;nc&quot;,pid=5569,fd=3)) | tcp   LISTEN 0      1          127.0.0.1:4444        0.0.0.0:*    users:((&quot;nc&quot;,pid=5569,fd=3))</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ea580c'>HIGH</span></td><td>file</td><td>suspicious file name: /tmp/forensics_lab_sim/backdoor.sh</td><td><code>-rwx------ root 2026-11-28 03:04:24.797366800 +0000 | mode 700, owner root, modified 2026-11-28 03:04</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ea580c'>HIGH</span></td><td>privilege</td><td>sudo refused for webadmin</td><td><code>2026-11-28T02:57:44+00:00 vm sudo:  webadmin : user NOT in sudoers ; TTY=pts/3 ; PWD=/home/webadmin ; USER=root ; COMMAND=/usr/bin/cat /etc/shadow</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ea580c'>HIGH</span></td><td>privilege</td><td>sudo used by webadmin, who is not in an admin group</td><td><code>2026-11-28T02:58:04+00:00 vm sudo: webadmin : TTY=pts/3 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ca8a04'>MEDIUM</span></td><td>authentication</td><td>log injection attempt: username contains a fake source address</td><td><code>2026-11-28T02:57:04+00:00 vm sshd[41150]: Failed password for invalid user test from 10.9.9.9 port 22 from 203.0.113.50 port 51200 ssh2 | real source 203.0.113.50; username was &#x27;test from 10.9.9.9 port 22&#x27;</code></td><td>live detection + data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ca8a04'>MEDIUM</span></td><td>privilege</td><td>sudo command by webadmin reads or edits credentials/sudo rules</td><td><code>/usr/bin/cat /etc/shadow</code></td><td>data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#ca8a04'>MEDIUM</span></td><td>privilege</td><td>sudo command by webadmin makes a temp-folder file executable</td><td><code>/usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh</code></td><td>data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#64748b'>INFO</span></td><td>network</td><td>7 connection(s) to public address <sandbox-service-ip>:443 by <sandbox agent></td><td><code>check that this program is expected to talk to this address</code></td><td>data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#64748b'>INFO</span></td><td>network</td><td>2 connection(s) to public address <sandbox-service-ip>:443 by <sandbox manager></td><td><code>check that this program is expected to talk to this address</code></td><td>data analysis</td></tr>
+<tr><td><span class='sev' style='--c:#64748b'>INFO</span></td><td>network</td><td>1 connection(s) to public address <sandbox-service-ip>:443 by <sandbox agent></td><td><code>check that this program is expected to talk to this address</code></td><td>data analysis</td></tr>
+</table></div>
+<h2>Failed logins by source</h2><div class='wrap'><table><tr><th>Source address</th><th>Failures</th><th style='width:50%'></th></tr>
+<tr><td><code>203.0.113.50</code></td><td>19</td><td><div class='hbar' style='width:100%'></div></td></tr>
+</table></div>
+<h2>Listening sockets</h2><div class='wrap'><table><tr><th>Proto</th><th>Local</th><th>Process</th></tr>
+<tr><td>tcp</td><td><code>127.0.0.1:38539</code></td><td>environment-man (pid 182)</td></tr>
+<tr><td>tcp</td><td><code>127.0.0.1:37899</code></td><td>claude (pid 192)</td></tr>
+<tr><td>tcp</td><td><code>127.0.0.1:4444</code></td><td>nc (pid 5569)</td></tr>
+<tr><td>tcp</td><td><code>0.0.0.0:2024</code></td><td></td></tr>
+</table></div>
+<h2>Timeline</h2><div class='wrap'><table><tr><th>Time</th><th>Source</th><th>Event</th></tr>
+<tr><td><code>2026-11-28T02:54:31+00:00</code></td><td>analysis</td><td>brute force from 203.0.113.50 begins</td></tr>
+<tr><td><code>2026-11-28T02:57:04+00:00</code></td><td>analysis</td><td>brute force from 203.0.113.50: last failure (19 in total)</td></tr>
+<tr><td><code>2026-11-28T02:57:14+00:00</code></td><td>test_auth.log</td><td>login accepted: webadmin from 203.0.113.50 (password)</td></tr>
+<tr><td><code>2026-11-28T02:57:44+00:00</code></td><td>test_auth.log</td><td>sudo by webadmin: /usr/bin/cat /etc/shadow</td></tr>
+<tr><td><code>2026-11-28T02:58:04+00:00</code></td><td>test_auth.log</td><td>sudo by webadmin: /usr/bin/chmod +x /tmp/forensics_lab_sim/backdoor.sh</td></tr>
+<tr><td><code>2026-11-28T02:58:24+00:00</code></td><td>test_auth.log</td><td>sudo by root: /usr/bin/apt update</td></tr>
+<tr><td><code>2026-11-28T02:59:24+00:00</code></td><td>test_auth.log</td><td>login accepted: root from 127.0.0.1 (publickey)</td></tr>
+</table></div>
+<footer>Generated by html_report_generator.py from the analyzer's JSON and the detector's findings. Nothing on this page was typed by hand.</footer></main></body></html>
