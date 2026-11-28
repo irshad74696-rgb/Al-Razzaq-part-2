@@ -1,0 +1,57 @@
+========================================================================
+  INDICATORS OF COMPROMISE - SUMMARY
+========================================================================
+  Files analysed: forensic_timeline.json, registry_analysis.json, security_events_analysis.json, system_events_analysis.json
+  Local time: UTC+5.0 h from SYSTEM hive (Pakistan Standard Time); business hours 06:00-22:00
+  Total anomalies: 17
+
+  Critical   1  ##
+  High      12  ##############################
+  Medium     3  ########
+  Low        1  ##
+
+  Top anomalies:
+  [A001] Critical Brute force succeeded: it-admin logged on from 203.0.113.50
+         Sat 2026-11-21 02:12:03 (UTC+05:00) | compromised account | T1078 Valid Accounts (after T1110)
+  [A002] High     1200 failed logons from 203.0.113.50
+         Sat 2026-11-21 02:04:10 (UTC+05:00) | brute force | T1110.001 Brute Force: Password Guessing
+  [A003] High     Account it-admin performed 5 sensitive actions in 11 minutes
+         Sat 2026-11-21 02:13:40 (UTC+05:00) | user behavior | T1078 Valid Accounts
+  [A004] High     Hidden or encoded PowerShell run by it-admin (confirmed by 2 sources)
+         Sat 2026-11-21 02:15:02 (UTC+05:00) | execution | T1059.001 PowerShell; T1027 Obfuscated Files or Information
+  [A005] High     S-1-5-21-1111111111-2222222222-3333333333-1010 added to Administrators
+         Sat 2026-11-21 02:16:45 (UTC+05:00) | account manipulation | T1098 Account Manipulation
+  [A006] High     New service 'Windows Update Helper' (confirmed by 2 sources)
+         Sat 2026-11-21 02:18:12 (UTC+05:00) | persistence | T1543.003 Windows Service
+  [A007] High     Microsoft Defender Antivirus Service disabled (confirmed by 2 sources)
+         Sat 2026-11-21 02:19:00 (UTC+05:00) | defense evasion | T1562.001 Disable or Modify Tools
+  [A008] High     Defender exclusion: C:\Users\Public\Libraries
+         Sat 2026-11-21 02:19:30 (UTC+05:00) | defense evasion | T1562.001 Disable or Modify Tools
+  [A009] High     Autostart entry 'WindowsUpdate'
+         Sat 2026-11-21 02:20:04 (UTC+05:00) | persistence | T1547.001 Registry Run Keys / Startup Folder
+  [A010] High     Remote access tool installed: AnyDesk 8.1.0
+         Sat 2026-11-21 02:21:30 (UTC+05:00) | remote access | T1219 Remote Access Software
+  ... and 7 more in ioc_report.json
+
+  Indicators:
+    IP addresses:     203.0.113.50
+    Accounts:         it-admin; support_tmp (S-1-5-21-1111111111-2222222222-3333333333-1010)
+    File paths:       C:\Users\Public\Libraries\AnyDesk; C:\Users\Public\Libraries\winupdate.exe
+    Services:         WinUpdateHelper; Windows Update Helper
+    Registry values:  HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths\C:\Users\Public\Libraries; HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\WindowsUpdate
+    Decoded commands: Write-Output 'FORENSICS-LAB SAMPLE: harmless placeholder for a malicious download cradle'
+
+  Recommendations:
+    1. Reset the password of every account that logged on after a brute force, end its sessions, and review everything it did; check other machines for the same credentials.
+    2. Block the attacking addresses, enable account lockout (for example 10 attempts / 15 minutes) and stop exposing SMB/RDP to the internet; put remote access behind a VPN with MFA.
+    3. Review the machines and accounts with the most suspicious events first.
+    4. Decode and review every encoded PowerShell command; enable PowerShell script block logging (event 4104) and process command-line auditing (event 4688).
+    5. Disable and investigate accounts created or added to Administrators during the incident; compare group membership with an approved list.
+    6. Image or copy and hash the binaries behind new services and autostart entries, then remove them once evidence is preserved.
+    7. Re-enable Microsoft Defender, remove exclusions nobody approved, and run a full offline scan.
+    8. Remove remote access tools that were not approved and check their own connection logs.
+    9. The audit log was cleared: recover older events from a log forwarder/SIEM, shadow copies or backups, and forward logs off the machine so a local clear cannot erase them.
+    10. Remove plaintext credentials from the registry (Winlogon DefaultPassword, app settings) and rotate those passwords.
+    11. Confirm with the account owners whether the off-hours activity was theirs; alert on admin activity outside business hours.
+    12. Compare high event volumes with a normal day for this machine before calling them malicious.
+========================================================================

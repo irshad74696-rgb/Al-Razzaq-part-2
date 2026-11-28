@@ -1,6 +1,6 @@
 # Cybersecurity Fundamentals
 
-Core hands-on skills for security work: driving a shell on Linux and Windows-style tooling, automating routine jobs with Python and Bash, hardening and monitoring a Linux host, detecting changes to the files that matter, protecting files with hashing and encryption, responding to an incident from detection to report, and automating forensic collection and analysis. Each folder holds its own README with what I did, the commands, what broke and how I fixed it, plus the scripts I wrote.
+Core hands-on skills for security work: driving a shell on Linux and Windows-style tooling, automating routine jobs with Python and Bash, hardening and monitoring a Linux host, detecting changes to the files that matter, protecting files with hashing and encryption, responding to an incident from detection to report, and automating forensic collection and analysis on Linux and Windows evidence. Each folder holds its own README with what I did, the commands, what broke and how I fixed it, plus the scripts I wrote.
 
 | Folder | What it covers | Scripts |
 | --- | --- | --- |
@@ -13,5 +13,6 @@ Core hands-on skills for security work: driving a shell on Linux and Windows-sty
 | [`lab-14-cryptography-with-python/`](lab-14-cryptography-with-python/README.md) | SHA-256 hashing and integrity checks, Fernet and password-based AES-256 with PBKDF2 and HMAC, an encrypted vault, a folder security audit | 6 Python tools + shared module + 19 tests |
 | [`lab-15-incident-response-simulation/`](lab-15-incident-response-simulation/README.md) | A staged Linux compromise worked as an incident: IoC triage, containment with snapshot-first and surgical iptables rules, hashed evidence with chain of custody, a generated incident report | 7 Bash scripts + shared library + 38-check test |
 | [`lab-16-linux-forensics-automation/`](lab-16-linux-forensics-automation/README.md) | Evidence collection with a hashed manifest, Python analysis of auth logs, processes and sockets, live detection of unauthorised activity, generated text and HTML forensic reports | 4 Bash scripts + 2 Python tools + shared library + 73 tests |
+| [`lab-17-windows-forensics-automation/`](lab-17-windows-forensics-automation/README.md) | Windows event logs and registry hives parsed on Linux, PowerShell 7 summary with timeline and report, anomaly detection and an IOC report with MITRE ATT&CK mapping | 3 Python tools + PowerShell script + runner + sample builders + 34 tests |
 
 Write-ups for each day are in the [Lab Log](../LAB-LOG.md).
