@@ -1,0 +1,150 @@
+{
+  "AnalysisType": "EventLog",
+  "SourceFile": "system_events.json",
+  "OriginalEvidence": "System.evtx",
+  "OriginalSha256": "8dafbd1f1fd7024027e7f2b72d848571c9475c4a2ca9d60152325dede15c99cd",
+  "Channel": "System",
+  "AnalyzedAt": "2026-11-28T09:23:34.868991Z",
+  "TotalEvents": 50,
+  "ParseErrors": 0,
+  "UniqueEventIDs": 5,
+  "TopEventIDs": [
+    {
+      "EventID": 7036,
+      "Count": 43,
+      "Description": "Service changed state"
+    },
+    {
+      "EventID": 6005,
+      "Count": 3,
+      "Description": "Event Log service started (boot)"
+    },
+    {
+      "EventID": 6006,
+      "Count": 2,
+      "Description": "Event Log service stopped (shutdown)"
+    },
+    {
+      "EventID": 7040,
+      "Count": 1,
+      "Description": "Service start type changed"
+    },
+    {
+      "EventID": 7045,
+      "Count": 1,
+      "Description": "New service installed"
+    }
+  ],
+  "SuspiciousEvents": {
+    "7045": 1,
+    "7040": 1
+  },
+  "DateRange": {
+    "Start": "2026-11-18T03:48:26.000000Z",
+    "End": "2026-11-20T21:19:01.000000Z"
+  },
+  "EventsByHourUTC": [
+    0,
+    0,
+    0,
+    33,
+    0,
+    3,
+    0,
+    3,
+    0,
+    2,
+    0,
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4,
+    0,
+    0
+  ],
+  "EventsByComputer": {
+    "WS-LAB-07": 50
+  },
+  "SuspiciousByComputer": {
+    "WS-LAB-07": 2
+  },
+  "LogonsBySource": [],
+  "FailedLogonsByAccount": {},
+  "RemoteLogonsFromPublicAddresses": [],
+  "NotableEvents": [
+    {
+      "Timestamp": "2026-11-18T03:48:26.000000Z",
+      "EventID": 6005,
+      "Description": "Event Log service started (boot)",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1,
+      "Details": {}
+    },
+    {
+      "Timestamp": "2026-11-18T12:32:03.000000Z",
+      "EventID": 6006,
+      "Description": "Event Log service stopped (shutdown)",
+      "Computer": "WS-LAB-07",
+      "RecordId": 15,
+      "Details": {}
+    },
+    {
+      "Timestamp": "2026-11-19T03:44:30.000000Z",
+      "EventID": 6005,
+      "Description": "Event Log service started (boot)",
+      "Computer": "WS-LAB-07",
+      "RecordId": 16,
+      "Details": {}
+    },
+    {
+      "Timestamp": "2026-11-19T12:50:05.000000Z",
+      "EventID": 6006,
+      "Description": "Event Log service stopped (shutdown)",
+      "Computer": "WS-LAB-07",
+      "RecordId": 32,
+      "Details": {}
+    },
+    {
+      "Timestamp": "2026-11-20T03:49:57.000000Z",
+      "EventID": 6005,
+      "Description": "Event Log service started (boot)",
+      "Computer": "WS-LAB-07",
+      "RecordId": 33,
+      "Details": {}
+    },
+    {
+      "Timestamp": "2026-11-20T21:18:12.000000Z",
+      "EventID": 7045,
+      "Description": "Service 'Windows Update Helper' installed: C:\\Users\\Public\\Libraries\\winupdate.exe (auto start, LocalSystem)",
+      "Computer": "WS-LAB-07",
+      "RecordId": 47,
+      "Details": {
+        "ServiceName": "Windows Update Helper",
+        "ImagePath": "C:\\Users\\Public\\Libraries\\winupdate.exe",
+        "ServiceType": "user mode service",
+        "StartType": "auto start",
+        "AccountName": "LocalSystem"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:19:00.000000Z",
+      "EventID": 7040,
+      "Description": "Start type of 'Microsoft Defender Antivirus Service' changed from auto start to disabled",
+      "Computer": "WS-LAB-07",
+      "RecordId": 49,
+      "Details": {
+        "param1": "Microsoft Defender Antivirus Service",
+        "param2": "auto start",
+        "param3": "disabled",
+        "param4": "WinDefend"
+      }
+    }
+  ]
+}

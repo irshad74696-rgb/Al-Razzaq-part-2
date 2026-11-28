@@ -21,3 +21,9 @@ cybersecurity-fundamentals/lab-14-cryptography-with-python/**/secure_vault/
 cybersecurity-fundamentals/lab-14-cryptography-with-python/**/integrity.json
 cybersecurity-fundamentals/lab-14-cryptography-with-python/**/audit_report_*.json
 secret.key
+
+# Windows forensics lab: extracted JSON and run output are regenerated from the samples
+cybersecurity-fundamentals/lab-17-windows-forensics-automation/samples/event-logs/*.json
+cybersecurity-fundamentals/lab-17-windows-forensics-automation/samples/registry-hives/*.json
+cybersecurity-fundamentals/lab-17-windows-forensics-automation/forensic_output/
+cybersecurity-fundamentals/lab-17-windows-forensics-automation/forensic_case/

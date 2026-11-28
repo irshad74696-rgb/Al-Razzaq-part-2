@@ -1,0 +1,159 @@
+{
+  "AnalysisType": "Registry",
+  "AnalyzedAt": "2026-11-28T09:23:34.991683Z",
+  "Files": [
+    {
+      "File": "software_hive.json",
+      "HiveType": "SOFTWARE",
+      "Evidence": "SOFTWARE",
+      "Sha256": "c90b48e0b71cde4a8e9f178023fec1a4a9395f58e3382228d5d8578d28caede0",
+      "KeysSummarised": 6,
+      "ValuesSummarised": 4
+    },
+    {
+      "File": "system_hive.json",
+      "HiveType": "SYSTEM",
+      "Evidence": "SYSTEM",
+      "Sha256": "f040814f4e1404c81f981ad1b7976c7258b678745b9a8e934d7b7171c979be26",
+      "KeysSummarised": 16,
+      "ValuesSummarised": 0
+    }
+  ],
+  "System": {
+    "ComputerName": "WS-LAB-07",
+    "ControlSet": "ControlSet001",
+    "TimeZone": "Pakistan Standard Time",
+    "UtcOffsetMinutes": 300,
+    "LastShutdown": "2026-11-19T12:52:00.000000Z",
+    "Interfaces": [
+      {
+        "Address": "10.20.30.47",
+        "Gateway": "10.20.30.1",
+        "Dhcp": true
+      }
+    ]
+  },
+  "Software": {
+    "ProductName": "Windows 10 Pro",
+    "Version": "22H2",
+    "Build": "19045",
+    "InstallDate": "2026-03-10T06:20:00.000000Z",
+    "InstalledPrograms": 6
+  },
+  "TotalServices": 16,
+  "InterestingValues": [
+    {
+      "File": "software_hive.json",
+      "Key": "ROOT\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+      "Name": "DefaultPassword",
+      "Keyword": "Password",
+      "Data": "SA************ (31 characters, masked)",
+      "Masked": true
+    }
+  ],
+  "StartupEntries": [
+    {
+      "Location": "Microsoft\\Windows\\CurrentVersion\\Run",
+      "Name": "SecurityHealth",
+      "Command": "%windir%\\system32\\SecurityHealthSystray.exe",
+      "LastWritten": "2026-11-20T21:20:04.000000Z",
+      "Flags": []
+    },
+    {
+      "Location": "Microsoft\\Windows\\CurrentVersion\\Run",
+      "Name": "WindowsUpdate",
+      "Command": "powershell.exe -NoProfile -WindowStyle Hidden -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAEYATwBSAEUATgBTAEkAQwBTAC0ATABBAEIAIABTAEEATQBQAEwARQA6ACAAaABhAHIAbQBsAGUAcwBzACAAcABsAGEAYwBlAGgAbwBsAGQAZQByACAAZgBvAHIAIABhACAAbQBhAGwAaQBjAGkAbwB1AHMAIABkAG8AdwBuAGwAbwBhAGQAIABjAHIAYQBkAGwAZQAnAA==",
+      "LastWritten": "2026-11-20T21:20:04.000000Z",
+      "Flags": [
+        "encoded PowerShell command",
+        "hidden window"
+      ],
+      "DecodedCommand": "Write-Output 'FORENSICS-LAB SAMPLE: harmless placeholder for a malicious download cradle'"
+    },
+    {
+      "Location": "Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+      "Name": "Shell",
+      "Command": "explorer.exe",
+      "LastWritten": "2026-04-09T06:20:00.000000Z",
+      "Flags": []
+    },
+    {
+      "Location": "Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+      "Name": "Userinit",
+      "Command": "C:\\Windows\\system32\\userinit.exe,",
+      "LastWritten": "2026-04-09T06:20:00.000000Z",
+      "Flags": []
+    }
+  ],
+  "FlaggedServices": [
+    {
+      "Name": "WinUpdateHelper",
+      "DisplayName": "Windows Update Helper",
+      "ImagePath": "C:\\Users\\Public\\Libraries\\winupdate.exe",
+      "StartType": "automatic",
+      "Account": "LocalSystem",
+      "LastWritten": "2026-11-20T21:18:12.000000Z",
+      "Flags": [
+        "runs from a user-writable folder",
+        "auto-start program outside Windows and Program Files",
+        "name imitates a Windows component"
+      ]
+    }
+  ],
+  "DisabledSecurityServices": [
+    {
+      "Name": "WinDefend",
+      "DisplayName": "Microsoft Defender Antivirus Service",
+      "LastWritten": "2026-11-20T21:19:00.000000Z"
+    }
+  ],
+  "DefenderExclusions": [
+    {
+      "Kind": "paths",
+      "Value": "C:\\Users\\Public\\Libraries",
+      "LastWritten": "2026-11-20T21:19:30.000000Z"
+    }
+  ],
+  "RemoteAccessSoftware": [
+    {
+      "Name": "AnyDesk",
+      "Version": "8.1.0",
+      "Publisher": "AnyDesk Software GmbH",
+      "InstallDate": "20261121",
+      "InstallLocation": "C:\\Users\\Public\\Libraries\\AnyDesk",
+      "LastWritten": "2026-11-20T21:21:30.000000Z"
+    }
+  ],
+  "RegistryTimeline": [
+    {
+      "Timestamp": "2026-11-20T21:21:30.000000Z",
+      "Source": "registry:SOFTWARE",
+      "Category": "remote access",
+      "Description": "AnyDesk 8.1.0 installed (C:\\Users\\Public\\Libraries\\AnyDesk)"
+    },
+    {
+      "Timestamp": "2026-11-20T21:20:04.000000Z",
+      "Source": "registry:SOFTWARE",
+      "Category": "persistence",
+      "Description": "Autostart 'WindowsUpdate' in Microsoft\\Windows\\CurrentVersion\\Run: encoded PowerShell command, hidden window"
+    },
+    {
+      "Timestamp": "2026-11-20T21:19:30.000000Z",
+      "Source": "registry:SOFTWARE",
+      "Category": "defense evasion",
+      "Description": "Defender exclusion (paths): C:\\Users\\Public\\Libraries"
+    },
+    {
+      "Timestamp": "2026-11-20T21:19:00.000000Z",
+      "Source": "registry:SYSTEM",
+      "Category": "defense evasion",
+      "Description": "Security service WinDefend set to disabled"
+    },
+    {
+      "Timestamp": "2026-11-20T21:18:12.000000Z",
+      "Source": "registry:SYSTEM",
+      "Category": "persistence",
+      "Description": "Service key WinUpdateHelper written (C:\\Users\\Public\\Libraries\\winupdate.exe)"
+    }
+  ]
+}

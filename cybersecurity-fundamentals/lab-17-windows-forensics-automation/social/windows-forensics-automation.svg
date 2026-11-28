@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" aria-labelledby="t d">
+  <title id="t">Windows Forensics on Linux: Extract, Summarise, Correlate, Report</title>
+  <desc id="d">Four stages of a Windows forensics workflow run on Linux: Python extraction of event logs and registry hives, a PowerShell 7 summary and timeline, correlation of the two sources, and a graded IOC report. Below, real output lines from a test run against a staged intrusion.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1c2a47" stroke-width="1"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#475569"/>
+    </marker>
+    <style>
+      .h   { font: 700 44px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #f1f5f9; }
+      .sub { font: 400 21px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+      .num { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; fill: #64748b; }
+      .q   { font: 800 26px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; }
+      .p   { font: 400 16px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #cbd5e1; }
+      .mono{ font: 400 15px 'DejaVu Sans Mono', Consolas, monospace; fill: #cbd5e1; }
+      .tag { font: 700 15px 'DejaVu Sans Mono', Consolas, monospace; }
+      .foot{ font: 600 18px 'Segoe UI', 'DejaVu Sans', Arial, sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect width="1200" height="627" fill="url(#grid)" opacity="0.5"/>
+
+  <!-- window mark with magnifier -->
+  <g transform="translate(60 40)">
+    <rect x="0" y="0" width="22" height="22" rx="3" fill="#38bdf8" fill-opacity="0.85"/>
+    <rect x="26" y="0" width="22" height="22" rx="3" fill="#38bdf8" fill-opacity="0.55"/>
+    <rect x="0" y="26" width="22" height="22" rx="3" fill="#38bdf8" fill-opacity="0.55"/>
+    <g fill="none" stroke="#f1f5f9" stroke-width="4" stroke-linecap="round">
+      <circle cx="40" cy="40" r="13" fill="#0b1220"/>
+      <line x1="50" y1="50" x2="62" y2="62"/>
+    </g>
+  </g>
+  <text x="136" y="80" class="h">Windows Forensics, on Linux</text>
+  <text x="136" y="114" class="sub">Event logs and registry hives in, a graded IOC report out, no Windows machine needed</text>
+
+  <!-- card 1 -->
+  <g transform="translate(60 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#22c55e" stroke-width="2"/>
+    <text x="22" y="34" class="num">01</text>
+    <text x="22" y="68" class="q" fill="#22c55e">EXTRACT</text>
+    <text x="22" y="102" class="p">Python parses .evtx logs</text>
+    <text x="22" y="124" class="p">and SYSTEM / SOFTWARE</text>
+    <text x="22" y="146" class="p">hives, read-only.</text>
+    <text x="22" y="178" class="p">Every source SHA-256</text>
+    <text x="22" y="200" class="p">hashed. Secrets masked.</text>
+  </g>
+  <line x1="314" y1="264" x2="336" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 2 -->
+  <g transform="translate(340 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="22" y="34" class="num">02</text>
+    <text x="22" y="68" class="q" fill="#f59e0b">SUMMARISE</text>
+    <text x="22" y="102" class="p">PowerShell 7: logons per</text>
+    <text x="22" y="124" class="p">source address, flagged</text>
+    <text x="22" y="146" class="p">Run keys and services,</text>
+    <text x="22" y="168" class="p">one timeline and a</text>
+    <text x="22" y="190" class="p">Markdown report.</text>
+  </g>
+  <line x1="594" y1="264" x2="616" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 3 -->
+  <g transform="translate(620 146)">
+    <rect width="250" height="236" rx="14" fill="#0f172a" stroke="#ef4444" stroke-width="2"/>
+    <text x="22" y="34" class="num">03</text>
+    <text x="22" y="68" class="q" fill="#f87171">CORRELATE</text>
+    <text x="22" y="102" class="p">Event log and registry</text>
+    <text x="22" y="124" class="p">agree on the same minute.</text>
+    <text x="22" y="156" class="p">Off hours judged in the</text>
+    <text x="22" y="178" class="p">machine's own time zone,</text>
+    <text x="22" y="200" class="p">read from the hive.</text>
+  </g>
+  <line x1="874" y1="264" x2="896" y2="264" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- card 4 -->
+  <g transform="translate(900 146)">
+    <rect width="240" height="236" rx="14" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+    <text x="22" y="34" class="num">04</text>
+    <text x="22" y="68" class="q" fill="#38bdf8">REPORT</text>
+    <text x="22" y="102" class="p">IOCs graded Critical</text>
+    <text x="22" y="124" class="p">to Low, mapped to</text>
+    <text x="22" y="146" class="p">MITRE ATT&amp;CK.</text>
+    <text x="22" y="178" class="p">Clean machine:</text>
+    <text x="22" y="200" class="p">zero findings.</text>
+  </g>
+
+  <!-- terminal strip with real output -->
+  <g transform="translate(60 404)">
+    <rect width="1080" height="152" rx="12" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+    <circle cx="22" cy="20" r="5" fill="#ef4444"/><circle cx="40" cy="20" r="5" fill="#f59e0b"/><circle cx="58" cy="20" r="5" fill="#22c55e"/>
+    <text x="24" y="56" class="tag" fill="#dc2626">[CRITICAL]</text>
+    <text x="140" y="56" class="mono">Brute force succeeded: it-admin logged on from 203.0.113.50 after 1,200 failures</text>
+    <text x="24" y="82" class="tag" fill="#f97316">[HIGH]</text>
+    <text x="140" y="82" class="mono">New service 'Windows Update Helper' from C:\Users\Public (confirmed by 2 sources)</text>
+    <text x="24" y="108" class="tag" fill="#f97316">[HIGH]</text>
+    <text x="140" y="108" class="mono">Defender disabled, folder excluded, Security log cleared at 02:24 local time</text>
+    <text x="24" y="134" class="tag" fill="#22c55e">[ OK ]</text>
+    <text x="140" y="134" class="mono">Clean baseline: 0 anomalies  ·  34 of 34 tests pass, PowerShell included</text>
+  </g>
+
+  <text x="60" y="596" class="foot">Irshad Ali  ·  Windows forensics automation lab</text>
+  <text x="1140" y="596" class="foot" text-anchor="end">#DFIR  #WindowsForensics  #BlueTeam</text>
+</svg>

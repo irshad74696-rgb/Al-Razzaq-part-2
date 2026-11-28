@@ -1,0 +1,532 @@
+{
+  "AnalysisType": "EventLog",
+  "SourceFile": "security_events.json",
+  "OriginalEvidence": "Security.evtx",
+  "OriginalSha256": "f9afdf5aba33b11dada412393249af4fee211d16c8e5dbf28d3f400c5eca3a63",
+  "Channel": "Security",
+  "AnalyzedAt": "2026-11-28T09:23:34.797121Z",
+  "TotalEvents": 1268,
+  "ParseErrors": 0,
+  "UniqueEventIDs": 9,
+  "TopEventIDs": [
+    {
+      "EventID": 4625,
+      "Count": 1201,
+      "Description": "Failed logon"
+    },
+    {
+      "EventID": 4624,
+      "Count": 32,
+      "Description": "Successful logon"
+    },
+    {
+      "EventID": 4672,
+      "Count": 20,
+      "Description": "Special privileges assigned to new logon"
+    },
+    {
+      "EventID": 4634,
+      "Count": 10,
+      "Description": "Logoff"
+    },
+    {
+      "EventID": 1102,
+      "Count": 1,
+      "Description": "Security audit log was cleared"
+    },
+    {
+      "EventID": 4648,
+      "Count": 1,
+      "Description": "Logon with explicit credentials"
+    },
+    {
+      "EventID": 4688,
+      "Count": 1,
+      "Description": "New process created"
+    },
+    {
+      "EventID": 4720,
+      "Count": 1,
+      "Description": "User account created"
+    },
+    {
+      "EventID": 4732,
+      "Count": 1,
+      "Description": "Member added to a local security group"
+    }
+  ],
+  "SuspiciousEvents": {
+    "4624": 32,
+    "4672": 20,
+    "4625": 1201,
+    "4648": 1,
+    "4688": 1,
+    "4720": 1,
+    "4732": 1,
+    "1102": 1
+  },
+  "DateRange": {
+    "Start": "2026-11-18T03:48:36.000000Z",
+    "End": "2026-11-20T21:24:55.000000Z"
+  },
+  "EventsByHourUTC": [
+    0,
+    0,
+    0,
+    36,
+    4,
+    0,
+    6,
+    0,
+    3,
+    3,
+    6,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1207,
+    0,
+    0
+  ],
+  "EventsByComputer": {
+    "WS-LAB-07": 1268
+  },
+  "SuspiciousByComputer": {
+    "WS-LAB-07": 1208
+  },
+  "LogonsBySource": [
+    {
+      "IpAddress": "203.0.113.50",
+      "Failed": 1200,
+      "Succeeded": 1,
+      "External": true,
+      "FirstFailure": "2026-11-20T21:04:10.000000Z",
+      "LastFailure": "2026-11-20T21:11:50.778999Z",
+      "FirstSuccessAfterFailure": {
+        "Timestamp": "2026-11-20T21:12:03.000000Z",
+        "User": "it-admin",
+        "RecordId": 1262
+      },
+      "AccountsTried": {
+        "administrator": 567,
+        "user": 100,
+        "admin": 115,
+        "backup": 101,
+        "it-admin": 109,
+        "guest": 117,
+        "test": 91
+      },
+      "SuccessfulAccounts": {
+        "it-admin": 1
+      },
+      "LogonTypes": {
+        "3": 1201
+      }
+    },
+    {
+      "IpAddress": "-",
+      "Failed": 1,
+      "Succeeded": 18,
+      "External": false,
+      "FirstFailure": "2026-11-19T04:08:43.000000Z",
+      "LastFailure": "2026-11-19T04:08:43.000000Z",
+      "FirstSuccessAfterFailure": null,
+      "AccountsTried": {
+        "alice": 1
+      },
+      "SuccessfulAccounts": {
+        "SYSTEM": 18
+      },
+      "LogonTypes": {
+        "5": 18,
+        "2": 1
+      }
+    },
+    {
+      "IpAddress": "10.20.30.15",
+      "Failed": 0,
+      "Succeeded": 6,
+      "External": false,
+      "FirstFailure": null,
+      "LastFailure": null,
+      "FirstSuccessAfterFailure": null,
+      "AccountsTried": {},
+      "SuccessfulAccounts": {
+        "bob": 6
+      },
+      "LogonTypes": {
+        "3": 6
+      }
+    },
+    {
+      "IpAddress": "127.0.0.1",
+      "Failed": 0,
+      "Succeeded": 6,
+      "External": false,
+      "FirstFailure": null,
+      "LastFailure": null,
+      "FirstSuccessAfterFailure": null,
+      "AccountsTried": {},
+      "SuccessfulAccounts": {
+        "alice": 6
+      },
+      "LogonTypes": {
+        "2": 3,
+        "7": 3
+      }
+    },
+    {
+      "IpAddress": "10.20.30.5",
+      "Failed": 0,
+      "Succeeded": 1,
+      "External": false,
+      "FirstFailure": null,
+      "LastFailure": null,
+      "FirstSuccessAfterFailure": null,
+      "AccountsTried": {},
+      "SuccessfulAccounts": {
+        "it-admin": 1
+      },
+      "LogonTypes": {
+        "10": 1
+      }
+    }
+  ],
+  "FailedLogonsByAccount": {
+    "administrator": 567,
+    "user": 100,
+    "alice": 1,
+    "backup": 101,
+    "it-admin": 109,
+    "guest": 117,
+    "test": 91,
+    "admin": 115
+  },
+  "RemoteLogonsFromPublicAddresses": [
+    {
+      "Timestamp": "2026-11-20T21:12:03.000000Z",
+      "User": "it-admin",
+      "IpAddress": "203.0.113.50",
+      "LogonType": 3,
+      "RecordId": 1262
+    }
+  ],
+  "NotableEvents": [
+    {
+      "Timestamp": "2026-11-18T06:25:15.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "Computer": "WS-LAB-07",
+      "RecordId": 14,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1002",
+        "TargetUserName": "bob",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x4d399",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "WS-LAB-02",
+        "ProcessName": "-",
+        "IpAddress": "10.20.30.15",
+        "IpPort": "58274"
+      }
+    },
+    {
+      "Timestamp": "2026-11-18T10:03:17.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "Computer": "WS-LAB-07",
+      "RecordId": 17,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1002",
+        "TargetUserName": "bob",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x4d8b5",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "WS-LAB-02",
+        "ProcessName": "-",
+        "IpAddress": "10.20.30.15",
+        "IpPort": "62037"
+      }
+    },
+    {
+      "Timestamp": "2026-11-19T06:31:14.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "Computer": "WS-LAB-07",
+      "RecordId": 34,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1002",
+        "TargetUserName": "bob",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x5aebb",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "WS-LAB-02",
+        "ProcessName": "-",
+        "IpAddress": "10.20.30.15",
+        "IpPort": "55834"
+      }
+    },
+    {
+      "Timestamp": "2026-11-19T09:05:12.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (RDP) by it-admin from 10.20.30.5",
+      "Computer": "WS-LAB-07",
+      "RecordId": 37,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "TargetUserName": "it-admin",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x62434",
+        "LogonType": "10",
+        "LogonProcessName": "Advapi  ",
+        "AuthenticationPackageName": "Negotiate",
+        "WorkstationName": "IT-DESK-01",
+        "ProcessName": "C:\\Windows\\System32\\svchost.exe",
+        "IpAddress": "10.20.30.5",
+        "IpPort": "61349"
+      }
+    },
+    {
+      "Timestamp": "2026-11-19T09:05:12.000999Z",
+      "EventID": 4672,
+      "Description": "Admin privileges assigned to it-admin",
+      "Computer": "WS-LAB-07",
+      "RecordId": 38,
+      "Details": {
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x62434",
+        "PrivilegeList": "SeSecurityPrivilege\n\t\t\tSeTakeOwnershipPrivilege\n\t\t\tSeLoadDriverPrivilege\n\t\t\tSeBackupPrivilege\n\t\t\tSeRestorePrivilege\n\t\t\tSeDebugPrivilege\n\t\t\tSeSystemEnvironmentPrivilege\n\t\t\tSeImpersonatePrivilege\n\t\t\tSeDelegateSessionUserImpersonatePrivilege"
+      }
+    },
+    {
+      "Timestamp": "2026-11-19T10:48:13.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "Computer": "WS-LAB-07",
+      "RecordId": 40,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1002",
+        "TargetUserName": "bob",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x5be63",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "WS-LAB-02",
+        "ProcessName": "-",
+        "IpAddress": "10.20.30.15",
+        "IpPort": "57064"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T06:22:22.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "Computer": "WS-LAB-07",
+      "RecordId": 56,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1002",
+        "TargetUserName": "bob",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x74d85",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "WS-LAB-02",
+        "ProcessName": "-",
+        "IpAddress": "10.20.30.15",
+        "IpPort": "58060"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T10:33:48.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "Computer": "WS-LAB-07",
+      "RecordId": 59,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1002",
+        "TargetUserName": "bob",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x7643b",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "WS-LAB-02",
+        "ProcessName": "-",
+        "IpAddress": "10.20.30.15",
+        "IpPort": "50477"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:12:03.000000Z",
+      "EventID": 4624,
+      "Description": "Logon (network) by it-admin from 203.0.113.50",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1262,
+      "Details": {
+        "SubjectUserSid": "S-1-5-18",
+        "SubjectUserName": "WS-LAB-07$",
+        "SubjectDomainName": "LABCORP",
+        "SubjectLogonId": "0x3e7",
+        "TargetUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "TargetUserName": "it-admin",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetLogonId": "0x78ee8",
+        "LogonType": "3",
+        "LogonProcessName": "NtLmSsp ",
+        "AuthenticationPackageName": "NTLM",
+        "WorkstationName": "-",
+        "ProcessName": "-",
+        "IpAddress": "203.0.113.50",
+        "IpPort": "52296"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:12:03.000999Z",
+      "EventID": 4672,
+      "Description": "Admin privileges assigned to it-admin",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1263,
+      "Details": {
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x78ee8",
+        "PrivilegeList": "SeSecurityPrivilege\n\t\t\tSeTakeOwnershipPrivilege\n\t\t\tSeLoadDriverPrivilege\n\t\t\tSeBackupPrivilege\n\t\t\tSeRestorePrivilege\n\t\t\tSeDebugPrivilege\n\t\t\tSeSystemEnvironmentPrivilege\n\t\t\tSeImpersonatePrivilege\n\t\t\tSeDelegateSessionUserImpersonatePrivilege"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:13:40.000000Z",
+      "EventID": 4648,
+      "Description": "it-admin used explicit credentials for administrator via C:\\Windows\\System32\\runas.exe",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1264,
+      "Details": {
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x78ee8",
+        "TargetUserName": "administrator",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetServerName": "localhost",
+        "TargetInfo": "localhost",
+        "ProcessId": "0x1b3c",
+        "ProcessName": "C:\\Windows\\System32\\runas.exe",
+        "IpAddress": "::1",
+        "IpPort": "0"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:15:02.000000Z",
+      "EventID": 4688,
+      "Description": "Process C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe started by it-admin",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1265,
+      "Details": {
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x78ee8",
+        "NewProcessId": "0x2214",
+        "NewProcessName": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "TokenElevationType": "%%1936",
+        "ProcessId": "0x1b3c",
+        "CommandLine": "powershell.exe -NoProfile -WindowStyle Hidden -EncodedCommand VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIAAnAEYATwBSAEUATgBTAEkAQwBTAC0ATABBAEIAIABTAEEATQBQAEwARQA6ACAAaABhAHIAbQBsAGUAcwBzACAAcABsAGEAYwBlAGgAbwBsAGQAZQByACAAZgBvAHIAIABhACAAbQBhAGwAaQBjAGkAbwB1AHMAIABkAG8AdwBuAGwAbwBhAGQAIABjAHIAYQBkAGwAZQAnAA==",
+        "ParentProcessName": "C:\\Windows\\System32\\cmd.exe",
+        "DecodedCommand": "Write-Output 'FORENSICS-LAB SAMPLE: harmless placeholder for a malicious download cradle'"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:16:30.000000Z",
+      "EventID": 4720,
+      "Description": "User account support_tmp created by it-admin",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1266,
+      "Details": {
+        "TargetUserName": "support_tmp",
+        "TargetDomainName": "WS-LAB-07",
+        "TargetSid": "S-1-5-21-1111111111-2222222222-3333333333-1010",
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x78ee8",
+        "SamAccountName": "support_tmp"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:16:45.000000Z",
+      "EventID": 4732,
+      "Description": "S-1-5-21-1111111111-2222222222-3333333333-1010 added to Administrators by it-admin",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1267,
+      "Details": {
+        "MemberName": "-",
+        "MemberSid": "S-1-5-21-1111111111-2222222222-3333333333-1010",
+        "TargetUserName": "Administrators",
+        "TargetDomainName": "Builtin",
+        "TargetSid": "S-1-5-32-544",
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x78ee8"
+      }
+    },
+    {
+      "Timestamp": "2026-11-20T21:24:55.000000Z",
+      "EventID": 1102,
+      "Description": "Security log cleared by it-admin",
+      "Computer": "WS-LAB-07",
+      "RecordId": 1268,
+      "Details": {
+        "SubjectUserSid": "S-1-5-21-1111111111-2222222222-3333333333-1005",
+        "SubjectUserName": "it-admin",
+        "SubjectDomainName": "WS-LAB-07",
+        "SubjectLogonId": "0x78ee8"
+      }
+    }
+  ]
+}

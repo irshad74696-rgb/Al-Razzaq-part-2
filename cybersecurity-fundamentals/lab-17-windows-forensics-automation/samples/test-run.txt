@@ -1,0 +1,40 @@
+$ ~/forensics-venv/bin/python -m unittest discover -s tests -v
+test_decode_powershell (test_lab.AnalyzerUnits.test_decode_powershell) ... ok
+test_high_frequency_thresholds (test_lab.AnalyzerUnits.test_high_frequency_thresholds) ... ok
+test_off_hours_falls_back_to_date_range (test_lab.AnalyzerUnits.test_off_hours_falls_back_to_date_range) ... ok
+test_parse_offset (test_lab.AnalyzerUnits.test_parse_offset) ... ok
+test_clean_machine_has_no_findings (test_lab.CleanBaseline.test_clean_machine_has_no_findings) ... ok
+test_bad_inputs (test_lab.ExtractEventLogs.test_bad_inputs) ... ok
+test_chain_of_custody_and_permissions (test_lab.ExtractEventLogs.test_chain_of_custody_and_permissions) ... ok
+test_counts_and_summary (test_lab.ExtractEventLogs.test_counts_and_summary) ... ok
+test_damaged_record_is_skipped (test_lab.ExtractEventLogs.test_damaged_record_is_skipped) ... ok
+test_fields (test_lab.ExtractEventLogs.test_fields) ... ok
+test_no_xml_option (test_lab.ExtractEventLogs.test_no_xml_option) ... ok
+test_key_mode_translates_live_paths (test_lab.ExtractRegistry.test_key_mode_translates_live_paths) ... ok
+test_missing_key_and_bad_file (test_lab.ExtractRegistry.test_missing_key_and_bad_file) ... ok
+test_secret_masked_unless_asked (test_lab.ExtractRegistry.test_secret_masked_unless_asked) ... ok
+test_sensitive_name_rules (test_lab.ExtractRegistry.test_sensitive_name_rules) ... ok
+test_software_info (test_lab.ExtractRegistry.test_software_info) ... ok
+test_system_info (test_lab.ExtractRegistry.test_system_info) ... ok
+test_event_text_cannot_break_the_report (test_lab.HostileInput.test_event_text_cannot_break_the_report) ... ok
+test_brute_force_then_success (test_lab.Pipeline.test_brute_force_then_success) ... ok
+test_encoded_command_decoded_not_run (test_lab.Pipeline.test_encoded_command_decoded_not_run) ... ok
+test_expected_outputs (test_lab.Pipeline.test_expected_outputs) ... ok
+test_handout_rules (test_lab.Pipeline.test_handout_rules) ... ok
+test_key_indicators (test_lab.Pipeline.test_key_indicators) ... ok
+test_local_time_zone_does_not_change_results (test_lab.Pipeline.test_local_time_zone_does_not_change_results) ... ok
+test_secret_never_in_outputs (test_lab.Pipeline.test_secret_never_in_outputs) ... ok
+test_timeline_sorted_and_report_sections (test_lab.Pipeline.test_timeline_sorted_and_report_sections) ... ok
+test_utc_offset_override (test_lab.Pipeline.test_utc_offset_override) ... ok
+test_missing_data_path (test_lab.PowerShellSyntax.test_missing_data_path) ... ok
+test_script_parses_cleanly (test_lab.PowerShellSyntax.test_script_parses_cleanly) ... ok
+test_evtx_checksums_and_counts (test_lab.SampleFiles.test_evtx_checksums_and_counts) ... ok
+test_evtx_independent_parser (test_lab.SampleFiles.test_evtx_independent_parser) ... ok
+test_hives_independent_parser (test_lab.SampleFiles.test_hives_independent_parser) ... ok
+test_hives_valid (test_lab.SampleFiles.test_hives_valid) ... ok
+test_samples_are_reproducible (test_lab.SampleFiles.test_samples_are_reproducible) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 34.153s
+
+OK

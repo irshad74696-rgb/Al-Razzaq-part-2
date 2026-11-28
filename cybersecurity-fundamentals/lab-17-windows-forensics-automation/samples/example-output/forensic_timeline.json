@@ -1,0 +1,246 @@
+{
+  "Generated": "2026-11-28T09:23:35.037209Z",
+  "TimeZone": "UTC",
+  "EntryCount": 31,
+  "Entries": [
+    {
+      "Timestamp": "2026-11-18T03:48:26.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 6005,
+      "Category": "event",
+      "Description": "Event Log service started (boot)",
+      "RecordId": 1
+    },
+    {
+      "Timestamp": "2026-11-18T06:25:15.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "RecordId": 14
+    },
+    {
+      "Timestamp": "2026-11-18T10:03:17.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "RecordId": 17
+    },
+    {
+      "Timestamp": "2026-11-18T12:32:03.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 6006,
+      "Category": "event",
+      "Description": "Event Log service stopped (shutdown)",
+      "RecordId": 15
+    },
+    {
+      "Timestamp": "2026-11-19T03:44:30.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 6005,
+      "Category": "event",
+      "Description": "Event Log service started (boot)",
+      "RecordId": 16
+    },
+    {
+      "Timestamp": "2026-11-19T06:31:14.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "RecordId": 34
+    },
+    {
+      "Timestamp": "2026-11-19T09:05:12.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (RDP) by it-admin from 10.20.30.5",
+      "RecordId": 37
+    },
+    {
+      "Timestamp": "2026-11-19T09:05:12.000999Z",
+      "Source": "eventlog:Security",
+      "EventID": 4672,
+      "Category": "event",
+      "Description": "Admin privileges assigned to it-admin",
+      "RecordId": 38
+    },
+    {
+      "Timestamp": "2026-11-19T10:48:13.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "RecordId": 40
+    },
+    {
+      "Timestamp": "2026-11-19T12:50:05.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 6006,
+      "Category": "event",
+      "Description": "Event Log service stopped (shutdown)",
+      "RecordId": 32
+    },
+    {
+      "Timestamp": "2026-11-19T12:52:00.000000Z",
+      "Source": "registry:SYSTEM",
+      "EventID": null,
+      "Category": "system",
+      "Description": "Last clean shutdown recorded in the registry"
+    },
+    {
+      "Timestamp": "2026-11-20T03:49:57.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 6005,
+      "Category": "event",
+      "Description": "Event Log service started (boot)",
+      "RecordId": 33
+    },
+    {
+      "Timestamp": "2026-11-20T06:22:22.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "RecordId": 56
+    },
+    {
+      "Timestamp": "2026-11-20T10:33:48.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by bob from 10.20.30.15",
+      "RecordId": 59
+    },
+    {
+      "Timestamp": "2026-11-20T21:04:10.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4625,
+      "Category": "brute force",
+      "Description": "First of 1200 failed logons from 203.0.113.50"
+    },
+    {
+      "Timestamp": "2026-11-20T21:11:50.778999Z",
+      "Source": "eventlog:Security",
+      "EventID": 4625,
+      "Category": "brute force",
+      "Description": "Last of 1200 failed logons from 203.0.113.50"
+    },
+    {
+      "Timestamp": "2026-11-20T21:12:03.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "event",
+      "Description": "Logon (network) by it-admin from 203.0.113.50",
+      "RecordId": 1262
+    },
+    {
+      "Timestamp": "2026-11-20T21:12:03.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4624,
+      "Category": "brute force",
+      "Description": "Successful logon as it-admin from 203.0.113.50 after 1200 failures"
+    },
+    {
+      "Timestamp": "2026-11-20T21:12:03.000999Z",
+      "Source": "eventlog:Security",
+      "EventID": 4672,
+      "Category": "event",
+      "Description": "Admin privileges assigned to it-admin",
+      "RecordId": 1263
+    },
+    {
+      "Timestamp": "2026-11-20T21:13:40.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4648,
+      "Category": "event",
+      "Description": "it-admin used explicit credentials for administrator via C:\\Windows\\System32\\runas.exe",
+      "RecordId": 1264
+    },
+    {
+      "Timestamp": "2026-11-20T21:15:02.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4688,
+      "Category": "event",
+      "Description": "Process C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe started by it-admin",
+      "RecordId": 1265
+    },
+    {
+      "Timestamp": "2026-11-20T21:16:30.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4720,
+      "Category": "event",
+      "Description": "User account support_tmp created by it-admin",
+      "RecordId": 1266
+    },
+    {
+      "Timestamp": "2026-11-20T21:16:45.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 4732,
+      "Category": "event",
+      "Description": "S-1-5-21-1111111111-2222222222-3333333333-1010 added to Administrators by it-admin",
+      "RecordId": 1267
+    },
+    {
+      "Timestamp": "2026-11-20T21:18:12.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 7045,
+      "Category": "event",
+      "Description": "Service 'Windows Update Helper' installed: C:\\Users\\Public\\Libraries\\winupdate.exe (auto start, LocalSystem)",
+      "RecordId": 47
+    },
+    {
+      "Timestamp": "2026-11-20T21:18:12.000000Z",
+      "Source": "registry:SYSTEM",
+      "EventID": null,
+      "Category": "persistence",
+      "Description": "Service key WinUpdateHelper written (C:\\Users\\Public\\Libraries\\winupdate.exe) (key last written)"
+    },
+    {
+      "Timestamp": "2026-11-20T21:19:00.000000Z",
+      "Source": "registry:SYSTEM",
+      "EventID": null,
+      "Category": "defense evasion",
+      "Description": "Security service WinDefend set to disabled (key last written)"
+    },
+    {
+      "Timestamp": "2026-11-20T21:19:00.000000Z",
+      "Source": "eventlog:System",
+      "EventID": 7040,
+      "Category": "event",
+      "Description": "Start type of 'Microsoft Defender Antivirus Service' changed from auto start to disabled",
+      "RecordId": 49
+    },
+    {
+      "Timestamp": "2026-11-20T21:19:30.000000Z",
+      "Source": "registry:SOFTWARE",
+      "EventID": null,
+      "Category": "defense evasion",
+      "Description": "Defender exclusion (paths): C:\\Users\\Public\\Libraries (key last written)"
+    },
+    {
+      "Timestamp": "2026-11-20T21:20:04.000000Z",
+      "Source": "registry:SOFTWARE",
+      "EventID": null,
+      "Category": "persistence",
+      "Description": "Autostart 'WindowsUpdate' in Microsoft\\Windows\\CurrentVersion\\Run: encoded PowerShell command, hidden window (key last written)"
+    },
+    {
+      "Timestamp": "2026-11-20T21:21:30.000000Z",
+      "Source": "registry:SOFTWARE",
+      "EventID": null,
+      "Category": "remote access",
+      "Description": "AnyDesk 8.1.0 installed (C:\\Users\\Public\\Libraries\\AnyDesk) (key last written)"
+    },
+    {
+      "Timestamp": "2026-11-20T21:24:55.000000Z",
+      "Source": "eventlog:Security",
+      "EventID": 1102,
+      "Category": "event",
+      "Description": "Security log cleared by it-admin",
+      "RecordId": 1268
+    }
+  ]
+}
